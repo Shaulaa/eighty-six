@@ -1,0 +1,204 @@
+/* ============================================
+   navbar.css — EIGHTY-SIX Military HUD Navbar
+   ============================================ */
+
+#navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  z-index: 1000;
+  padding: 0 32px;
+  height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(10,10,11,0);
+  border-bottom: 1px solid rgba(192,41,43,0);
+  transition: background 0.4s ease, border-color 0.4s ease, backdrop-filter 0.4s ease;
+  box-sizing: border-box;
+  overflow: hidden; /* prevent any child bleeding out */
+}
+
+#navbar.scrolled {
+  background: rgba(10,10,11,0.92);
+  border-bottom-color: rgba(192,41,43,0.25);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+/* ── LOGO ── */
+.nav-logo {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 22px;
+  color: #fff;
+  letter-spacing: 0.08em;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.nav-logo .logo-num  { color: #c0292b; }
+
+.nav-logo .logo-sep  {
+  width: 1px;
+  height: 14px;
+  background: rgba(192,41,43,0.4);
+}
+
+.nav-logo .logo-sub  {
+  font-family: 'Orbitron', monospace;
+  font-size: 7px;
+  letter-spacing: 0.18em;
+  color: rgba(154,163,176,0.55);
+  font-weight: 400;
+  align-self: flex-end;
+  margin-bottom: 3px;
+}
+
+/* ── NAV LINKS (desktop) ── */
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links a {
+  font-family: 'Orbitron', monospace;
+  font-size: 8px;
+  letter-spacing: 0.16em;
+  color: rgba(154,163,176,0.6);
+  text-decoration: none;
+  text-transform: uppercase;
+  position: relative;
+  padding-bottom: 2px;
+  white-space: nowrap;
+  transition: color 0.2s;
+}
+
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0;
+  width: 0%;
+  height: 1px;
+  background: #c0292b;
+  transition: width 0.3s ease;
+}
+
+.nav-links a:hover,
+.nav-links a.active { color: #e8eaed; }
+
+.nav-links a:hover::after,
+.nav-links a.active::after { width: 100%; }
+
+/* ── STATUS DOT ── */
+.nav-status {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.nav-status-dot {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: 'Orbitron', monospace;
+  font-size: 7px;
+  letter-spacing: 0.15em;
+  color: rgba(154,163,176,0.4);
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.nav-status-dot::before {
+  content: '';
+  width: 5px; height: 5px;
+  border-radius: 50%;
+  background: #c0292b;
+  box-shadow: 0 0 6px #c0292b;
+  animation: navDotPulse 2s ease-in-out infinite;
+  flex-shrink: 0;
+}
+
+@keyframes navDotPulse {
+  0%, 100% { opacity: 0.5; box-shadow: 0 0 4px #c0292b; }
+  50%       { opacity: 1;   box-shadow: 0 0 10px #c0292b; }
+}
+
+/* ── HAMBURGER ── */
+.nav-hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  padding: 6px;
+  flex-shrink: 0;
+  z-index: 10;
+}
+
+.nav-hamburger span {
+  display: block;
+  width: 20px;
+  height: 1.5px;
+  background: #9aa3b0;
+  transition: all 0.3s;
+}
+
+/* ── MOBILE ── */
+@media (max-width: 768px) {
+  #navbar {
+    padding: 0 16px;
+    height: 50px;
+    overflow: visible; /* allow dropdown */
+  }
+
+  .nav-links {
+    display: none;
+    position: fixed; /* fixed so it doesn't get clipped */
+    top: 50px;
+    left: 0;
+    right: 0;
+    width: 100%;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0;
+    background: rgba(10,10,11,0.97);
+    border-bottom: 1px solid rgba(192,41,43,0.25);
+    padding: 8px 0 16px;
+    z-index: 999;
+  }
+
+  .nav-links.open { display: flex; }
+
+  .nav-links li { width: 100%; }
+
+  .nav-links a {
+    display: block;
+    padding: 11px 20px;
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    border-left: 2px solid transparent;
+    transition: color 0.2s, border-color 0.2s;
+  }
+
+  .nav-links a:hover,
+  .nav-links a.active {
+    border-left-color: #c0292b;
+    padding-left: 16px;
+  }
+
+  .nav-links a::after { display: none; }
+
+  .nav-status  { display: none; }
+  .nav-hamburger { display: flex; }
+
+  .nav-logo .logo-sub { display: none; }
+  .nav-logo .logo-sep { display: none; }
+}
