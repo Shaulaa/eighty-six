@@ -5,12 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>EIGHTY-SIX — 86</title>
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Bebas+Neue&family=Inter:wght@300;400;500&family=Noto+Serif+JP:wght@300;400&display=swap" rel="stylesheet"/>
-  <link rel="stylesheet" href="./css/style.css"/>
-  <link rel="stylesheet" href="./css/animation.css"/>
-  <link rel="stylesheet" href="./css/military-ui.css"/>
-  <link rel="stylesheet" href="./css/responsive.css"/>
-  <link rel="stylesheet" href="./css/navbar.css"/>
-  <link rel="stylesheet" href="./css/loader.css"/>
+  <link rel="stylesheet" href="css/style.css"/>
+  <link rel="stylesheet" href="css/animation.css"/>
+  <link rel="stylesheet" href="css/military-ui.css"/>
+  <link rel="stylesheet" href="css/responsive.css"/>
+  <link rel="stylesheet" href="css/navbar.css"/>
+  <link rel="stylesheet" href="css/loader.css"/>
+  <link rel="stylesheet" href="css/para-raid.css"/>
 </head>
 <body>
 
@@ -43,6 +44,7 @@
       <li><a href="#characters">Characters</a></li>
       <li><a href="#quotes">Quotes</a></li>
       <li><a href="#war">Battlefield</a></li>
+      <li><a href="#para-raid">Para-RAID</a></li>
     </ul>
     <div class="nav-status">
       <div class="nav-status-dot">ACTIVE</div>
@@ -54,10 +56,9 @@
 
   <!-- ── HERO ── -->
   <section class="hero" id="hero">
-    <div class="hero-bg" style="background-image: url('img/wallhaven-weywxr_1920x1080.png');"></div>
+    <div class="hero-bg" style="background-image:url('img/wallhaven-weywxr_1920x1080.png')"></div>
     <div class="hero-grid"></div>
     <div class="hero-scanlines"></div>
-    <div class="hero-slash"></div>
     <div class="corner corner-tl"></div>
     <div class="corner corner-tr"></div>
     <div class="corner corner-bl"></div>
@@ -246,6 +247,67 @@
     </div>
   </section>
 
+
+  <!-- ── PARA-RAID SYNC ── -->
+  <section id="para-raid">
+    <div class="pr-bg-grid"></div>
+    <div class="pr-scanlines"></div>
+    <div class="pr-vignette"></div>
+    <div class="pr-noise"></div>
+
+    <!-- Radar (top right) -->
+    <div class="pr-radar-wrap">
+      <canvas id="pr-radar-canvas"></canvas>
+    </div>
+
+    <div class="pr-inner">
+
+      <!-- Header -->
+      <div class="pr-init">
+        <div class="pr-system-label">NEURAL INTERFACE SYSTEM</div>
+        <h2 class="pr-title">PARA<span class="cyan">·</span>RAID</h2>
+        <div class="pr-subtitle">HANDLER ONE — SYNCHRONIZATION ACTIVE</div>
+      </div>
+
+      <!-- Terminal -->
+      <div class="pr-terminal">
+        <div id="pr-terminal-lines">
+          <div class="pr-terminal-line dim">// AWAITING CONNECTION...<span class="pr-cursor"></span></div>
+        </div>
+      </div>
+
+      <!-- Neural Nodes -->
+      <div class="pr-neural-wrap">
+        <canvas id="pr-neural-canvas"></canvas>
+      </div>
+
+      <!-- ECG -->
+      <div class="pr-ecg-wrap">
+        <div class="pr-ecg-label">NEURAL PULSE — SPEARHEAD SQUADRON</div>
+        <canvas id="pr-ecg-canvas"></canvas>
+      </div>
+
+      <!-- Waveform -->
+      <div class="pr-waveform-wrap">
+        <div class="pr-waveform-label">▂ RADIO TRANSMISSION FREQUENCY ▂</div>
+        <canvas id="pr-wave-canvas"></canvas>
+      </div>
+
+      <!-- Transmissions -->
+      <div class="pr-transmissions" id="pr-transmissions"></div>
+
+      <!-- Quote -->
+      <div class="pr-quote">
+        <div class="pr-quote-text">
+          "Can you hear the voices of the <em>Eighty-Six</em>?<br>
+          Even from far away... we are still connected."
+        </div>
+        <div class="pr-quote-author">— PARA-RAID SYSTEM · HANDLER ONE</div>
+      </div>
+
+    </div>
+  </section>
+
   <!-- ── ENDING ── -->
   <section class="ending" id="ending">
     <div class="ending-inner">
@@ -274,15 +336,18 @@
   </section>
 
   <!-- ── SCRIPTS ── -->
-  <script src="./js/loader.js"></script>
+  <script src="js/loader.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.20/dist/lenis.min.js"></script>
-  <script src="./js/app.js"></script>
-  <script src="./js/glitch.js"></script>
-  <script src="./js/scroll.js"></script>
-  <script src="./js/particles.js"></script>
-  <script src="./js/typed.js"></script>
-  <script src="./js/navbar.js"></script>
-  <script src="./js/scroll-effects.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/glitch.js"></script>
+  <script src="js/scroll.js"></script>
+  <script src="js/particles.js"></script>
+  <script src="js/weather.js"></script>
+  <script src="js/typed.js"></script>
+  <script src="js/navbar.js"></script>
+  <script src="js/scroll-effects.js"></script>
+  <script src="js/cursor.js"></script>
+  <script src="js/para-raid.js"></script>
   <script>
     const lenis = new Lenis({
       lerp: 0.08,
@@ -312,5 +377,6 @@
       });
     });
   </script>
+  <div id="pr-overload" class="pr-overload"></div>
 </body>
 </html>

@@ -1,0 +1,379 @@
+/* ============================================
+   para-raid.css — EIGHTY-SIX Para-RAID Section
+   Neural sync experience
+   ============================================ */
+
+/* ── SECTION WRAPPER ── */
+#para-raid {
+  position: relative;
+  background: #060608;
+  padding: 0;
+  overflow: hidden;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ── BACKGROUND EFFECTS ── */
+.pr-bg-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(0,255,200,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,255,200,0.03) 1px, transparent 1px);
+  background-size: 32px 32px;
+  z-index: 0;
+}
+
+.pr-scanlines {
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0,0,0,0.12) 2px,
+    rgba(0,0,0,0.12) 4px
+  );
+  z-index: 1;
+  pointer-events: none;
+}
+
+.pr-vignette {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 80% 80% at 50% 50%,
+    transparent 40%, rgba(0,0,0,0.85) 100%);
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* ── NOISE OVERLAY ── */
+.pr-noise {
+  position: absolute;
+  inset: 0;
+  opacity: 0.04;
+  z-index: 3;
+  pointer-events: none;
+  animation: noiseShift 0.08s steps(1) infinite;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  background-size: 200px 200px;
+}
+
+@keyframes noiseShift {
+  0%  { background-position: 0 0; }
+  25% { background-position: -50px 30px; }
+  50% { background-position: 20px -40px; }
+  75% { background-position: -30px 60px; }
+}
+
+/* ── MAIN CONTENT ── */
+.pr-inner {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  max-width: 960px;
+  padding: 80px 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* ── INIT HEADER ── */
+.pr-init {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.pr-system-label {
+  font-family: 'Orbitron', monospace;
+  font-size: 9px;
+  letter-spacing: 0.35em;
+  color: rgba(0,255,200,0.5);
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.pr-system-label::before,
+.pr-system-label::after {
+  content: '';
+  width: 40px;
+  height: 1px;
+  background: rgba(0,255,200,0.3);
+}
+
+.pr-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(48px, 9vw, 96px);
+  letter-spacing: 0.08em;
+  color: #fff;
+  line-height: 0.9;
+  margin-bottom: 8px;
+}
+
+.pr-title .cyan { color: #00ffc8; }
+
+.pr-subtitle {
+  font-family: 'Orbitron', monospace;
+  font-size: 10px;
+  letter-spacing: 0.3em;
+  color: rgba(154,163,176,0.5);
+}
+
+/* ── TYPING TERMINAL ── */
+.pr-terminal {
+  width: 100%;
+  max-width: 560px;
+  background: rgba(0,255,200,0.03);
+  border: 1px solid rgba(0,255,200,0.12);
+  padding: 20px 24px;
+  margin-bottom: 56px;
+  position: relative;
+}
+
+.pr-terminal::before {
+  content: 'PARA-RAID OS v2.1 // CLASSIFIED';
+  position: absolute;
+  top: -9px;
+  left: 16px;
+  font-family: 'Orbitron', monospace;
+  font-size: 8px;
+  letter-spacing: 0.2em;
+  color: rgba(0,255,200,0.6);
+  background: #060608;
+  padding: 0 8px;
+}
+
+.pr-terminal-line {
+  font-family: 'Orbitron', monospace;
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  color: rgba(0,255,200,0.8);
+  line-height: 2;
+  min-height: 20px;
+}
+
+.pr-terminal-line.dim { color: rgba(154,163,176,0.4); }
+.pr-terminal-line.red { color: rgba(192,41,43,0.8); }
+
+.pr-cursor {
+  display: inline-block;
+  width: 7px;
+  height: 13px;
+  background: #00ffc8;
+  margin-left: 2px;
+  vertical-align: middle;
+  animation: cursorBlink 0.9s step-end infinite;
+}
+
+@keyframes cursorBlink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+
+/* ── NEURAL NODE CANVAS ── */
+.pr-neural-wrap {
+  width: 100%;
+  position: relative;
+  margin-bottom: 56px;
+}
+
+#pr-neural-canvas {
+  width: 100%;
+  height: 280px;
+  display: block;
+}
+
+/* ── ECG / HEARTBEAT ── */
+.pr-ecg-wrap {
+  width: 100%;
+  margin-bottom: 56px;
+  position: relative;
+}
+
+.pr-ecg-label {
+  font-family: 'Orbitron', monospace;
+  font-size: 8px;
+  letter-spacing: 0.25em;
+  color: rgba(192,41,43,0.6);
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.pr-ecg-label::before {
+  content: '';
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: #c0292b;
+  box-shadow: 0 0 8px #c0292b;
+  animation: ecgPulse 1.2s ease-in-out infinite;
+}
+
+@keyframes ecgPulse {
+  0%, 100% { box-shadow: 0 0 4px #c0292b; }
+  50%       { box-shadow: 0 0 16px #c0292b, 0 0 30px rgba(192,41,43,0.4); }
+}
+
+#pr-ecg-canvas {
+  width: 100%;
+  height: 70px;
+  display: block;
+}
+
+/* ── TRANSMISSIONS ── */
+.pr-transmissions {
+  width: 100%;
+  max-width: 560px;
+  margin-bottom: 56px;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.pr-msg {
+  padding: 16px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.pr-msg.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.pr-msg-header {
+  font-family: 'Orbitron', monospace;
+  font-size: 8px;
+  letter-spacing: 0.25em;
+  margin-bottom: 6px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.pr-msg-header.lena { color: rgba(58,123,213,0.9); }
+.pr-msg-header.shin { color: rgba(192,41,43,0.9); }
+.pr-msg-header.raiden { color: rgba(0,255,200,0.6); }
+
+.pr-msg-header::before {
+  content: '';
+  width: 4px; height: 4px;
+  border-radius: 50%;
+  background: currentColor;
+  flex-shrink: 0;
+}
+
+.pr-msg-text {
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  font-weight: 300;
+  font-style: italic;
+  color: rgba(200,205,212,0.85);
+  line-height: 1.7;
+  padding-left: 12px;
+  border-left: 1px solid rgba(255,255,255,0.08);
+}
+
+.pr-msg-time {
+  font-family: 'Orbitron', monospace;
+  font-size: 7px;
+  letter-spacing: 0.15em;
+  color: rgba(255,255,255,0.15);
+  margin-left: auto;
+}
+
+/* ── WAVEFORM ── */
+.pr-waveform-wrap {
+  width: 100%;
+  margin-bottom: 56px;
+}
+
+.pr-waveform-label {
+  font-family: 'Orbitron', monospace;
+  font-size: 8px;
+  letter-spacing: 0.2em;
+  color: rgba(0,255,200,0.4);
+  margin-bottom: 8px;
+  text-transform: uppercase;
+}
+
+#pr-wave-canvas {
+  width: 100%;
+  height: 60px;
+  display: block;
+}
+
+/* ── CLOSING QUOTE ── */
+.pr-quote {
+  text-align: center;
+  padding: 40px 0 0;
+  border-top: 1px solid rgba(0,255,200,0.08);
+  width: 100%;
+  max-width: 560px;
+}
+
+.pr-quote-text {
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(15px, 2vw, 20px);
+  font-style: italic;
+  font-weight: 300;
+  color: rgba(200,205,212,0.7);
+  line-height: 1.8;
+  margin-bottom: 14px;
+}
+
+.pr-quote-text em { color: #00ffc8; font-style: normal; }
+
+.pr-quote-author {
+  font-family: 'Orbitron', monospace;
+  font-size: 9px;
+  letter-spacing: 0.2em;
+  color: rgba(192,41,43,0.6);
+}
+
+/* ── OVERLOAD FLASH ── */
+.pr-overload {
+  position: fixed;
+  inset: 0;
+  background: rgba(192,41,43,0.15);
+  z-index: 9990;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.05s;
+}
+
+.pr-overload.flash { opacity: 1; }
+
+/* ── RADAR ── */
+.pr-radar-wrap {
+  position: absolute;
+  top: 40px;
+  right: 40px;
+  width: 80px;
+  height: 80px;
+  z-index: 10;
+}
+
+#pr-radar-canvas {
+  width: 80px;
+  height: 80px;
+  display: block;
+}
+
+/* ── MOBILE ── */
+@media (max-width: 768px) {
+  .pr-inner { padding: 60px 20px; }
+  .pr-radar-wrap { display: none; }
+  #pr-neural-canvas { height: 200px; }
+  .pr-transmissions { max-width: 100%; }
+  .pr-quote { max-width: 100%; }
+}

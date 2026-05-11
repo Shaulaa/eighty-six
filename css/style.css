@@ -68,37 +68,24 @@ body {
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  background: var(--black);
+  background: #0a0a0b;
+  isolation: isolate;
 }
 
 .hero-bg {
   position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
+  top: -20%;
+  left: -10%;
+  width: 120%;
+  height: 140%;
   background-size: cover;
-  background-position: 50% 50%;
+  background-position: center center;
   background-repeat: no-repeat;
   z-index: 1;
-  will-change: background-position;
+  will-change: transform;
 }
 
-/* Dark overlay on top of hero image */
-.hero-bg::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background:
-    linear-gradient(180deg,
-      rgba(10,10,11,0.35) 0%,
-      rgba(10,10,11,0.55) 50%,
-      rgba(10,10,11,0.92) 85%,
-      #0a0a0b 100%),
-    linear-gradient(90deg,
-      rgba(10,10,11,0.7) 0%,
-      rgba(10,10,11,0.1) 60%,
-      rgba(10,10,11,0.0) 100%);
-}
+/* hero overlay moved to hero-content background */
 
 .hero-grid {
   position: absolute;
@@ -144,6 +131,15 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  background:
+    linear-gradient(180deg,
+      rgba(10,10,11,0.25) 0%,
+      rgba(10,10,11,0.4)  40%,
+      rgba(10,10,11,0.75) 80%,
+      rgba(10,10,11,1)    100%),
+    linear-gradient(90deg,
+      rgba(10,10,11,0.6) 0%,
+      rgba(10,10,11,0.0) 55%);
 }
 
 .hero-topbar {
@@ -905,12 +901,6 @@ body {
   100% { top: 100%; opacity: 0; }
 }
 
-/* ── PARALLAX LAYERS ── */
-.parallax-layer {
-  position: absolute;
-  inset: -20%;   /* oversized so movement doesn't reveal edges */
-  width: 140%;
-  height: 140%;
-  will-change: transform;
-  pointer-events: none;
-}
+
+
+  /* fg debris */
