@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="none">
+  <!-- Stars scattered -->
+  <circle cx="10" cy="10" r="1.2" fill="white" opacity="0.8"/>
+  <circle cx="24" cy="6"  r="1.5" fill="white" opacity="0.9"/>
+  <circle cx="38" cy="12" r="1.0" fill="white" opacity="0.7"/>
+  <circle cx="16" cy="18" r="0.8" fill="white" opacity="0.6"/>
+  <circle cx="34" cy="20" r="1.2" fill="white" opacity="0.75"/>
+  <circle cx="8"  cy="26" r="0.7" fill="white" opacity="0.5"/>
+  <circle cx="42" cy="22" r="0.9" fill="white" opacity="0.65"/>
+  <!-- Moon crescent -->
+  <circle cx="28" cy="14" r="7" fill="#c8d8f0" opacity="0.75"/>
+  <circle cx="31" cy="12" r="5.5" fill="#0a0a0e" opacity="1"/>
+  <!-- Horizon silhouette -->
+  <path d="M4 38 L10 30 L14 38 L20 28 L26 38 L30 32 L34 38 L40 30 L44 36 L44 48 L4 48Z" fill="#0a0a0e" opacity="0.9"/>
+  <!-- Ground glow -->
+  <rect x="4" y="40" width="40" height="8" fill="#0d0d14" opacity="0.8"/>
+</svg>

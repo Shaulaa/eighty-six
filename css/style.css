@@ -904,3 +904,27 @@ body {
 
 
   /* fg debris */
+
+/* ── BATTLEFIELD SMOOTH TRANSITION ── */
+.war-cell {
+  transition: opacity 0.1s linear;
+  will-change: transform, opacity;
+}
+
+.war-img {
+  will-change: transform, filter;
+  transition: filter 0.4s ease !important;
+}
+
+.war-line {
+  will-change: transform, opacity;
+  transform: scaleX(0);
+}
+
+/* ── ENDING PARALLAX PREP ── */
+.ending-logo,
+.ending-quote,
+.ending-dedication,
+.ending-footer {
+  will-change: transform, opacity;
+}

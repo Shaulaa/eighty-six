@@ -163,17 +163,43 @@ html, body {
   .war-line { grid-column: span 1; }
 
   /* ── ENDING ── */
-  .ending { padding: 60px 20px 40px; }
+  .ending { padding: 60px 20px 50px; }
+
+  .ending-logo { font-size: clamp(40px, 12vw, 70px); }
+
+  .ending-quote {
+    font-size: 13px;
+    line-height: 1.9;
+    padding: 0 4px;
+  }
 
   .ending-footer {
     flex-direction: column;
-    align-items: flex-start;
-    gap: 20px;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    padding-top: 20px;
+    text-align: center;
+  }
+
+  .footer-author {
+    font-size: 8px;
+    line-height: 2;
+    text-align: center;
+  }
+
+  .footer-author strong {
+    font-size: 11px;
+    letter-spacing: 0.1em;
   }
 
   .footer-nav {
-    flex-wrap: wrap;
-    gap: 14px;
+    display: none;
+  }
+
+  .footer-badge {
+    font-size: 8px;
+    padding: 4px 10px;
   }
 
   /* ── SECTION HEADING ── */
