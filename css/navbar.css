@@ -148,7 +148,8 @@
   width: 20px;
   height: 1.5px;
   background: #9aa3b0;
-  transition: all 0.3s;
+  transition: transform 0.35s ease, opacity 0.25s ease;
+  transform-origin: center;
 }
 
 /* ── MOBILE ── */
@@ -175,9 +176,26 @@
     z-index: 999;
   }
 
-  .nav-links.open { display: flex; }
+  .nav-links.open {
+    display: flex;
+    animation: menuSlideDown 0.35s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
 
-  .nav-links li { width: 100%; }
+  @keyframes menuSlideDown {
+    from {
+      opacity: 0;
+      transform: translateY(-8px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .nav-links li {
+    width: 100%;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+  }
 
   .nav-links a {
     display: block;
