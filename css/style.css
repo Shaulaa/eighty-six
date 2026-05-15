@@ -74,10 +74,10 @@ body {
 
 .hero-bg {
   position: absolute;
-  top: -20%;
-  left: -10%;
-  width: 120%;
-  height: 140%;
+  top: -15%;
+  left: -5%;
+  width: 110%;
+  height: 130%;
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
@@ -927,4 +927,128 @@ body {
 .ending-dedication,
 .ending-footer {
   will-change: transform, opacity;
+}
+
+/* ── SYNOPSIS DECORATIVE ELEMENTS ── */
+.synopsis {
+  position: relative;
+  overflow: hidden;
+}
+
+/* Big faded 86 behind content */
+.syn-bg-number {
+  position: absolute;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(200px, 35vw, 380px);
+  color: rgba(0,0,0,0.06);
+  right: -40px;
+  top: 50%;
+  transform: translateY(-50%);
+  line-height: 1;
+  letter-spacing: -0.05em;
+  pointer-events: none;
+  user-select: none;
+  z-index: 0;
+}
+
+/* Thin vertical accent lines */
+
+
+/* Corner brackets */
+.syn-corner {
+  position: absolute;
+  width: 28px;
+  height: 28px;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.syn-corner::before,
+.syn-corner::after {
+  content: '';
+  position: absolute;
+  background: rgba(192,41,43,0.3);
+}
+
+.syn-corner::before { width: 100%; height: 1px; top: 0; left: 0; }
+.syn-corner::after  { width: 1px; height: 100%; top: 0; left: 0; }
+
+.syn-corner-tl { top: 24px; left: 24px; }
+.syn-corner-br {
+  bottom: 24px; right: 24px;
+  transform: scale(-1);
+}
+
+/* Ensure grid sits above decorations */
+.synopsis-grid { position: relative; z-index: 2; }
+.section-heading { position: relative; z-index: 2; }
+
+/* Multi-paragraph text */
+.synopsis-text {
+  margin-bottom: 16px;
+}
+
+.synopsis-text:last-of-type {
+  margin-bottom: 0;
+}
+
+/* Genre tags */
+.syn-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 24px 0 20px;
+}
+
+.syn-tag {
+  font-family: 'Orbitron', monospace;
+  font-size: 8px;
+  letter-spacing: 0.18em;
+  color: rgba(50,50,50,0.6);
+  border: 1px solid rgba(50,50,50,0.2);
+  padding: 4px 10px;
+  text-transform: uppercase;
+}
+
+/* Image label overlay */
+.synopsis-img {
+  position: relative;
+}
+
+.syn-img-label {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 28px 16px 14px;
+  background: linear-gradient(0deg, rgba(0,0,0,0.75) 0%, transparent 100%);
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.syn-img-label-name {
+  font-family: 'Orbitron', monospace;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: #fff;
+}
+
+.syn-img-label-role {
+  font-family: 'Orbitron', monospace;
+  font-size: 8px;
+  letter-spacing: 0.12em;
+  color: rgba(192,41,43,0.8);
+}
+
+/* Move synopsis-info inside right column */
+.synopsis-info {
+  margin-top: 14px;
+  text-align: left;
+  font-size: 11px;
+  color: #888;
+  line-height: 2;
+  border-top: 1px solid #ddd;
+  padding-top: 12px;
 }

@@ -39,24 +39,29 @@
   align-items: center;
   gap: 8px;
   flex-shrink: 0;
+  line-height: 1;
 }
 
-.nav-logo .logo-num  { color: #c0292b; }
+.nav-logo .logo-num {
+  color: #c0292b;
+  line-height: 1;
+}
 
-.nav-logo .logo-sep  {
+.nav-logo .logo-sep {
   width: 1px;
   height: 14px;
   background: rgba(192,41,43,0.4);
+  align-self: center;
 }
 
-.nav-logo .logo-sub  {
-  font-family: 'Orbitron', monospace;
+.nav-logo .logo-sub {
+  font-family: "Orbitron", monospace;
   font-size: 7px;
   letter-spacing: 0.18em;
   color: rgba(154,163,176,0.55);
   font-weight: 400;
-  align-self: flex-end;
-  margin-bottom: 3px;
+  align-self: center;
+  padding-top: 1px;
 }
 
 /* ── NAV LINKS (desktop) ── */
@@ -162,18 +167,21 @@
 
   .nav-links {
     display: none;
-    position: fixed; /* fixed so it doesn't get clipped */
+    position: fixed;
     top: 50px;
     left: 0;
     right: 0;
     width: 100%;
+    max-width: 100vw;
     flex-direction: column;
     align-items: flex-start;
     gap: 0;
-    background: rgba(10,10,11,0.97);
+    background: rgba(10,10,11,0.98);
     border-bottom: 1px solid rgba(192,41,43,0.25);
     padding: 8px 0 16px;
     z-index: 999;
+    overflow: hidden;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.5);
   }
 
   .nav-links.open {

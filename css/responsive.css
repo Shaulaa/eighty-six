@@ -233,3 +233,31 @@ html, body {
     padding-right: 80px;
   }
 }
+
+/* ── MOBILE HERO BG FIX ── */
+@media (max-width: 768px) {
+  .hero {
+    overflow: hidden !important;
+  }
+
+  .hero-bg {
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 115% !important;
+    transform: none !important;
+    will-change: auto;
+  }
+
+  /* Disable all hero text parallax transforms on mobile */
+  .hero-title,
+  .hero-kanji,
+  .hero-jp-sub,
+  .hero-title-line,
+  .hero-meta,
+  .hero-tagline,
+  .hero-number,
+  .hero-grid {
+    will-change: auto;
+  }
+}

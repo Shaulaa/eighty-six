@@ -70,7 +70,7 @@ function init() {
     const inHero = sy < vh * 1.2;
 
     /* ══ HERO ══ */
-    if (bgEl && inHero)
+    if (bgEl && inHero && window.innerWidth > 768)
       bgEl.style.transform = `translate3d(${mx*20}px, ${sy*0.35}px, 0)`;
 
     if (gridEl && inHero) {

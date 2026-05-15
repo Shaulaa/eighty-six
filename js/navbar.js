@@ -45,6 +45,9 @@ function initNavbar() {
       isOpen = !isOpen;
       if (isOpen) {
         navLinks.classList.add('open');
+        // Lock body scroll without shifting layout
+        document.body.style.overflow   = 'hidden';
+        document.body.style.paddingRight = '0px';
         // animate each link in staggered
         navLinks.querySelectorAll('li').forEach((li, i) => {
           li.style.transitionDelay = `${i * 0.06}s`;
@@ -116,6 +119,9 @@ function initNavbar() {
       li.style.transitionDelay = '0s';
     });
     navLinks.classList.remove('open');
+    // Restore body scroll
+    document.body.style.overflow    = '';
+    document.body.style.paddingRight = '';
     const spans = hamburger.querySelectorAll('span');
     spans[0].style.transform = '';
     spans[1].style.opacity   = '';
