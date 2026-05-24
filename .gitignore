@@ -1,0 +1,37 @@
+# Dependencies
+node_modules/
+
+# Local editor and agent settings
+.vscode/
+.agents/
+
+# Archives and backups
+*.zip
+*.rar
+*.7z
+*.tar
+*.tar.gz
+*.bak
+*.tmp
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Local build/cache output
+dist/
+build/
+.cache/
+.parcel-cache/
+.vite/
+
+# Downloaded/extracted vendor packages
+gsap-3.15.0/

@@ -1,6 +1,6 @@
 /* ============================================
-   app.js — EIGHTY-SIX
-   Core init — NO hero transform here,
+   app.js - EIGHTY-SIX
+   Core init - NO hero transform here,
    all parallax handled by scroll-effects.js
    ============================================ */
 'use strict';
@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initEndingReveal();
 });
 
-/* ── ANCHOR NAV ── */
+/* ANCHOR NAV */
 function initNavLinks() {
   document.querySelectorAll('a[href^="#"]').forEach(link => {
     link.addEventListener('click', e => {
@@ -26,7 +26,7 @@ function initNavLinks() {
   });
 }
 
-/* ── ENDING SECTION REVEAL (IntersectionObserver) ── */
+/* ENDING SECTION REVEAL (IntersectionObserver) */
 function initEndingReveal() {
   const els = document.querySelectorAll('.ending-logo, .ending-quote, .ending-dedication, .ending-footer');
   const io  = new IntersectionObserver(entries => {

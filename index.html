@@ -6,15 +6,18 @@
   <title>EIGHTY-SIX — 86</title>
   <link rel="icon" type="image/png" href="img/favicon.png"/>
   <link rel="apple-touch-icon" href="img/favicon.png"/>
+  <link rel="preload" as="image" href="img/spearhead-squadron.jpg"/>
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Bebas+Neue&family=Inter:wght@300;400;500&family=Noto+Serif+JP:wght@300;400&display=swap" rel="stylesheet"/>
-  <link rel="stylesheet" href="css/style.css"/>
-  <link rel="stylesheet" href="css/animation.css"/>
+  <link rel="stylesheet" href="css/style.css?v=bg-sync-4"/>
+  <link rel="stylesheet" href="css/animation.css?v=battlefield-lateral-1"/>
   <link rel="stylesheet" href="css/military-ui.css"/>
   <link rel="stylesheet" href="css/responsive.css"/>
   <link rel="stylesheet" href="css/navbar.css"/>
   <link rel="stylesheet" href="css/loader.css"/>
-  <link rel="stylesheet" href="css/reception-themes.css"/>
+  <link rel="stylesheet" href="css/characters.css?v=quotes-bg-up-3"/>
+  <link rel="stylesheet" href="css/reception-themes.css?v=no-section-fades-1"/>
   <link rel="stylesheet" href="css/para-raid.css"/>
+  <link rel="stylesheet" href="css/cinematic.css"/>
 </head>
 <body>
 
@@ -59,7 +62,7 @@
   </nav>
 
   <!-- ── HERO ── -->
-  <section class="hero" id="hero">
+  <section class="hero" id="hero" data-color="#050608 #e8eaed" style="--section-bg:#050608;">
     <div class="hero-bg" style="background-image:url('img/wallhaven-weywxr_1920x1080.png')"></div>
     <div class="hero-grid"></div>
     <div class="hero-scanlines"></div>
@@ -89,6 +92,7 @@
           <div class="hero-kanji">八十六区 — 86</div>
           <div class="hero-number">86</div>
         </div>
+
       </div>
 
       <div class="hero-bottom">
@@ -103,112 +107,219 @@
   </section>
 
   <!-- ── SYNOPSIS ── -->
-  <section class="synopsis" id="synopsis">
+  <section class="synopsis" id="synopsis" data-color="#080a0e #e8eaed" style="--section-bg:#080a0e;">
 
-    <!-- Decorative background elements -->
-    <div class="syn-bg-number">86</div>
-    <div class="syn-corner syn-corner-tl"></div>
-    <div class="syn-corner syn-corner-br"></div>
+    <!-- BG layers -->
+    <div class="syn-bg-layer"></div>
+    <div class="syn-noise"></div>
+    <div class="syn-scanlines"></div>
 
-    <h2 class="section-heading">Movie Synopsis</h2>
-    <div class="synopsis-grid">
-      <div>
-        <div class="synopsis-divider"></div>
+    <!-- Transition veil from hero (dark → dark, seamless) -->
+    <div class="syn-top-veil"></div>
 
-        <p class="synopsis-text">
-          Di Republik San Magnolia, pemerintah mengklaim perang melawan pasukan otonom Legion berjalan tanpa korban jiwa. Mereka bilang yang bertempur adalah drone tanpa awak. Itu kebohongan.
-        </p>
-        <p class="synopsis-text">
-          Yang sesungguhnya bertempur adalah manusia. Mereka disebut <em>Eighty-Six</em>, dikirim ke garis depan tanpa nama, tanpa hak, dan tanpa harapan untuk kembali pulang.
-        </p>
-        <p class="synopsis-text">
-          Vladilena Milize adalah seorang Handler muda yang menolak menutup mata. Ia memimpin Skuadron Tombak, unit Eighty-Six paling berpengalaman yang paling dekat dengan kematian. Saat ia terhubung dengan Shinei Nouzen, seorang pejuang yang telah kehilangan hampir segalanya namun tetap berdiri, keduanya mulai memahami bahwa kebenaran jauh lebih berat dari semua yang pernah mereka bayangkan.
-        </p>
+    <!-- Pinned content wrapper -->
+    <div class="syn-pin-wrap">
 
-        <!-- Info tags -->
-        <div class="syn-tags">
-          <span class="syn-tag">Action</span>
-          <span class="syn-tag">Military</span>
-          <span class="syn-tag">Sci-Fi</span>
-          <span class="syn-tag">Tragedy</span>
-          <span class="syn-tag">Drama</span>
+      <!-- ── PANEL A: KICKER INTRO ── -->
+      <div class="syn-panel" id="syn-panel-kicker">
+        <div class="syn-kicker-inner">
+          <div class="syn-kicker-label">INTEL FILE · SAN MAGNOLIA</div>
+          <div class="syn-kicker-title">
+            <span class="syn-kicker-num">86</span>
+            <span class="syn-kicker-slash">/</span>
+            <span class="syn-kicker-sub">EIGHTY·SIX</span>
+          </div>
+          <div class="syn-kicker-line"></div>
+          <div class="syn-kicker-tagline">The Republic lied.<br>The Eighty-Six bled.</div>
         </div>
-
-        <div class="synopsis-credit">synopsis written by<br>Shaulaa</div>
       </div>
-      <div>
-        <div class="synopsis-img">
-          <img src="img/lena-86-eighty-six-hd-wallpaper-770d.jpg" alt="Vladilena Milize" />
-          <!-- Image info overlay -->
-          <div class="syn-img-label">
-            <span class="syn-img-label-name">Vladilena Milize</span>
-            <span class="syn-img-label-role">Handler One · First Lieutenant</span>
+
+      <!-- ── PANEL B: MAIN CONTENT ── -->
+      <div class="syn-panel" id="syn-panel-main">
+
+        <!-- Left: image column -->
+        <div class="syn-col-img">
+          <div class="syn-img-frame">
+            <div class="syn-img-corner syn-img-corner-tl"></div>
+            <div class="syn-img-corner syn-img-corner-br"></div>
+            <img src="img/lena-86-eighty-six-hd-wallpaper-770d.jpg" alt="Vladilena Milize" class="syn-portrait" />
+            <div class="syn-img-overlay"></div>
+            <div class="syn-img-badge">
+              <span class="syn-img-badge-name">Vladilena Milizé</span>
+              <span class="syn-img-badge-role">Handler One · First Lieutenant</span>
+            </div>
+          </div>
+          <div class="syn-img-meta">
+            <span>SEASON 1 · A-1 PICTURES</span>
+            <span>APRIL 10, 2021 · 23 MIN/EP</span>
           </div>
         </div>
-        <div class="synopsis-info">
-          Aired&nbsp;&nbsp;April 10, 2021 · Season 1<br>
-          Duration&nbsp;&nbsp;23 min / ep · PG-17
+
+        <!-- Right: text column -->
+        <div class="syn-col-text">
+          <div class="syn-section-label">MOVIE SYNOPSIS</div>
+          <h2 class="syn-heading">
+            <span class="syn-heading-line">Despair</span>
+            <span class="syn-heading-line syn-heading-red">of the</span>
+            <span class="syn-heading-line">Republic</span>
+          </h2>
+          <div class="syn-rule"></div>
+
+          <div class="syn-body">
+            <p class="syn-para" data-syn-index="0">
+              Di Republik San Magnolia, pemerintah mengklaim perang melawan pasukan otonom Legion berjalan tanpa korban jiwa. Mereka bilang yang bertempur adalah drone tanpa awak.
+              <em class="syn-em">Itu kebohongan.</em>
+            </p>
+            <p class="syn-para" data-syn-index="1">
+              Yang sesungguhnya bertempur adalah manusia. Mereka disebut <strong>Eighty-Six</strong> — dikirim ke garis depan tanpa nama, tanpa hak, dan tanpa harapan untuk kembali pulang.
+            </p>
+            <p class="syn-para" data-syn-index="2">
+              Vladilena Milize menolak menutup mata. Shinei Nouzen telah kehilangan hampir segalanya — namun tetap berdiri. Saat keduanya terhubung, mereka mulai memahami bahwa kebenaran jauh lebih berat dari semua yang pernah mereka bayangkan.
+            </p>
+          </div>
+
+          <div class="syn-tags">
+            <span class="syn-tag">Action</span>
+            <span class="syn-tag">Military</span>
+            <span class="syn-tag">Sci-Fi</span>
+            <span class="syn-tag">Tragedy</span>
+            <span class="syn-tag">Drama</span>
+          </div>
+
+          <div class="syn-credit">synopsis written by <strong>Shaulaa</strong></div>
+        </div>
+
+      </div><!-- /syn-panel-main -->
+
+    </div><!-- /syn-pin-wrap -->
+
+    <!-- Bottom transition veil to characters (dark) -->
+    <div class="syn-bottom-veil"></div>
+
+  </section>
+
+  <!-- ── CHARACTERS VERTICAL ── -->
+  <section id="characters" class="char-vertical" data-color="#0a0a0b #e8eaed" style="--section-bg:#0a0a0b;">
+    <div class="char-v-container">
+      <div class="char-v-content">
+
+        <!-- LEFT: sticky heading -->
+        <div class="char-v-left">
+          <h2 class="char-v-heading">
+            <span>SPEARHEAD</span>
+            <span>SQUADRON</span>
+          </h2>
+          <div class="char-v-sub">
+            <span class="char-v-label">EIGHTY-SIX · 86</span>
+            <span class="char-v-count">6 PROCESSOR UNITS</span>
+          </div>
+        </div>
+
+        <!-- RIGHT: scrolling items -->
+        <div class="char-v-right">
+
+          <div class="char-v-item">
+            <div class="char-v-id">ID · 001</div>
+            <h3 class="char-v-name">Vladilena Milizé</h3>
+            <p class="char-v-role">Handler · First Lieutenant</p>
+            <p class="char-v-desc">Republic officer who refuses to see the Eighty-Six as tools. She connects to them as equals — even when no one else will.</p>
+          </div>
+
+          <div class="char-v-item">
+            <div class="char-v-id">ID · 002</div>
+            <h3 class="char-v-name">Shinei Nouzen</h3>
+            <p class="char-v-role">Undertaker · Spearhead</p>
+            <p class="char-v-desc">He carries the voices of the dead. Known as the Reaper — the sole survivor of every unit he has ever fought with.</p>
+          </div>
+
+          <div class="char-v-item">
+            <div class="char-v-id">ID · 003</div>
+            <h3 class="char-v-name">Kurena Kukumila</h3>
+            <p class="char-v-role">Gunslinger · Spearhead</p>
+            <p class="char-v-desc">A fierce marksman with unwavering loyalty. She fights not for the Republic, but for the people beside her.</p>
+          </div>
+
+          <div class="char-v-item">
+            <div class="char-v-id">ID · 004</div>
+            <h3 class="char-v-name">Raiden Shuga</h3>
+            <p class="char-v-role">Laughing Fox · Spearhead</p>
+            <p class="char-v-desc">Shin's closest comrade. Steady, sharp, and brutally honest — the backbone of the Spearhead Squadron.</p>
+          </div>
+
+          <div class="char-v-item">
+            <div class="char-v-id">ID · 005</div>
+            <h3 class="char-v-name">Anju Emma</h3>
+            <p class="char-v-role">Snow Witch · Spearhead</p>
+            <p class="char-v-desc">Gentle in spirit, deadly in battle. She mourns every loss deeply — and keeps moving forward anyway.</p>
+          </div>
+
+          <div class="char-v-item">
+            <div class="char-v-id">ID · 006</div>
+            <h3 class="char-v-name">Theo Rikka</h3>
+            <p class="char-v-role">Wehrwolf · Spearhead</p>
+            <p class="char-v-desc">Hot-tempered but fiercely protective. He fights loudly so the others can fight on.</p>
+          </div>
+
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ── CHARACTERS ── -->
-  <section class="characters" id="characters">
-    <h2 class="section-heading">Characters</h2>
-    <div class="char-grid">
+  <!-- ── CHARACTERS HORIZONTAL ── -->
+  <section id="char-horizontal" class="char-horizontal" data-color="#0a0a0b #e8eaed" style="--section-bg:#0a0a0b;">
+    <div class="char-h-content">
 
-      <div class="char-card">
-        <img class="char-img" src="img/vladilena.jpg" alt="Vladilena Milizé" />
-        <div class="char-id">ID·001</div>
-        <div class="char-overlay">
-          <span class="char-name">Vladilena Milizé</span>
-          <span class="char-role">Handler · First Lieutenant</span>
+      <div class="char-h-item">
+        <img src="img/vladilena.jpg" alt="Vladilena Milizé" class="char-h-img"/>
+        <div class="char-h-overlay">
+          <div class="char-h-id">ID · 001</div>
+          <div class="char-h-name">Vladilena Milizé</div>
+          <div class="char-h-role">Handler · First Lieutenant</div>
         </div>
       </div>
 
-      <div class="char-card">
-        <img class="char-img" src="img/shinei.jpg" alt="Shinei Nouzen" />
-        <div class="char-id">ID·002</div>
-        <div class="char-overlay">
-          <span class="char-name">Shinei Nouzen</span>
-          <span class="char-role">Undertaker · Spearhead</span>
+      <div class="char-h-item">
+        <img src="img/shinei.jpg" alt="Shinei Nouzen" class="char-h-img"/>
+        <div class="char-h-overlay">
+          <div class="char-h-id">ID · 002</div>
+          <div class="char-h-name">Shinei Nouzen</div>
+          <div class="char-h-role">Undertaker · Spearhead</div>
         </div>
       </div>
 
-      <div class="char-card">
-        <img class="char-img" src="img/kurena.jpg" alt="Kurena Kukumila" />
-        <div class="char-id">ID·003</div>
-        <div class="char-overlay">
-          <span class="char-name">Kurena Kukumila</span>
-          <span class="char-role">Gunslinger · Spearhead</span>
+      <div class="char-h-item">
+        <img src="img/kurena.jpg" alt="Kurena Kukumila" class="char-h-img"/>
+        <div class="char-h-overlay">
+          <div class="char-h-id">ID · 003</div>
+          <div class="char-h-name">Kurena Kukumila</div>
+          <div class="char-h-role">Gunslinger · Spearhead</div>
         </div>
       </div>
 
-      <div class="char-card">
-        <img class="char-img" src="img/raiden.jpg" alt="Raiden Shuga" />
-        <div class="char-id">ID·004</div>
-        <div class="char-overlay">
-          <span class="char-name">Raiden Shuga</span>
-          <span class="char-role">Laughing Fox · Spearhead</span>
+      <div class="char-h-item">
+        <img src="img/raiden.jpg" alt="Raiden Shuga" class="char-h-img"/>
+        <div class="char-h-overlay">
+          <div class="char-h-id">ID · 004</div>
+          <div class="char-h-name">Raiden Shuga</div>
+          <div class="char-h-role">Laughing Fox · Spearhead</div>
         </div>
       </div>
 
-      <div class="char-card">
-        <img class="char-img" src="img/anju.jpg" alt="Anju Emma" />
-        <div class="char-id">ID·005</div>
-        <div class="char-overlay">
-          <span class="char-name">Anju Emma</span>
-          <span class="char-role">Snow Witch · Spearhead</span>
+      <div class="char-h-item">
+        <img src="img/anju.jpg" alt="Anju Emma" class="char-h-img"/>
+        <div class="char-h-overlay">
+          <div class="char-h-id">ID · 005</div>
+          <div class="char-h-name">Anju Emma</div>
+          <div class="char-h-role">Snow Witch · Spearhead</div>
         </div>
       </div>
 
-      <div class="char-card">
-        <img class="char-img" src="img/theo.jpg" alt="Theo Rikka" />
-        <div class="char-id">ID·006</div>
-        <div class="char-overlay">
-          <span class="char-name">Theo Rikka</span>
-          <span class="char-role">Wehrwolf · Spearhead</span>
+      <div class="char-h-item">
+        <img src="img/theo.jpg" alt="Theo Rikka" class="char-h-img"/>
+        <div class="char-h-overlay">
+          <div class="char-h-id">ID · 006</div>
+          <div class="char-h-name">Theo Rikka</div>
+          <div class="char-h-role">Wehrwolf · Spearhead</div>
         </div>
       </div>
 
@@ -216,7 +327,7 @@
   </section>
 
   <!-- ── QUOTES ── -->
-  <section class="quotes" id="quotes">
+  <section class="quotes" id="quotes" data-color="#111318 #e8eaed" style="--section-bg:#111318;">
     <div class="quotes-inner">
       <div class="quote-block">
         <p class="quote-text">Mereka bukan peluru. Mereka adalah manusia yang memilih untuk tetap manusia bahkan ketika dunia memaksa mereka menjadi alat.</p>
@@ -234,44 +345,109 @@
   </section>
 
   <!-- ── WAR / BATTLEFIELD ── -->
-  <section class="war" id="war">
-    <h2 class="section-heading light">Battlefield</h2>
-    <div class="war-grid">
-      <div class="war-cell">
-        <img class="war-img" src="img/juggernaut.jpg" alt="Juggernaut" />
-        <div class="war-cell-overlay"></div>
-        <div class="war-cell-text">
-          <div class="war-unit">JUGGERNAUT</div>
+  <section class="war battlefield-lateral" id="war" data-color="#07080b #e8eaed" style="--section-bg:#07080b;">
+    <div class="battlefield-brief">
+      <span class="battlefield-kicker">COMBAT DOSSIER</span>
+      <h2 class="section-heading light">Battlefield</h2>
+      <p>
+        Medan tempur Eighty-Six bukan duel seimbang antara dua mesin. Ini adalah ruang tempat Republik menyembunyikan kekejamannya di balik istilah "drone", sementara Legion mengubah perang menjadi sistem otomatis yang terus bergerak meski manusianya sudah lama kehilangan kendali.
+      </p>
+    </div>
+
+    <div class="battlefield-vertical-section" id="battlefield-juggernaut">
+      <div class="battlefield-static-panel">
+        <span class="battlefield-index">01 / REPUBLIC UNIT</span>
+        <h3>Juggernaut</h3>
+        <figure class="battlefield-image-frame">
+          <img src="img/juggernaut.jpg" alt="Juggernaut unit"/>
+        </figure>
+        <div class="battlefield-specs">
+          <span>Handler Link</span>
+          <span>Light Armor</span>
+          <span>Processor Operated</span>
         </div>
-        <div class="war-label">SF-17 UNIT</div>
-        <div class="war-tag">EIGHTY-SIX</div>
       </div>
-      <div class="war-cell">
-        <img class="war-img" src="img/legion.jpg" alt="Legion" />
-        <div class="war-cell-overlay"></div>
-        <div class="war-cell-text">
-          <div class="war-unit">LEGION</div>
+      <div class="battlefield-scroll-panel">
+        <div class="battlefield-large-child">
+          <p>
+            Juggernaut adalah senjata utama yang dipakai Republik San Magnolia untuk mempertahankan garis depan melawan Legion. Di mata warga Republik, unit ini dipromosikan sebagai drone tanpa awak, bukti bahwa perang dapat dijalankan tanpa korban manusia. Kenyataannya jauh lebih gelap: setiap Juggernaut dikemudikan oleh seorang Processor dari Eighty-Six, kelompok yang status kemanusiaannya dihapus oleh negara agar kematian mereka tidak dihitung sebagai korban perang.
+          </p>
+          <p>
+            Secara desain, Juggernaut bukan mesin yang benar-benar pantas disebut "aman". Tubuhnya ringan, armor-nya tipis, dan perlindungan untuk pilot hampir tidak ada. Keunggulan utamanya ada pada mobilitas, ukuran yang relatif kecil, dan kemampuan bergerak lincah di medan rusak. Unit ini cocok untuk serangan cepat, pengintaian, manuver samping, dan bertahan hidup melalui kelincahan, bukan melalui ketahanan. Karena itu, Processor harus mengandalkan refleks, kerja sama skuadron, serta pengalaman tempur yang diasah dari hari ke hari.
+          </p>
+          <p>
+            Tragedi Juggernaut adalah jarak antara propaganda dan kenyataan. Dari balik dinding Gran Mur, Republik bisa mengatakan bahwa tidak ada prajurit yang mati karena yang dikirim hanyalah "mesin". Tetapi di dalam kokpit sempit itu ada manusia yang mendengar suara rekan mereka jatuh, menghitung amunisi, membaca pergerakan Legion, dan mengambil keputusan dalam hitungan detik. Juggernaut menjadi simbol utama kebohongan Republik: sebuah kendaraan perang yang disebut tidak berawak justru menampakkan seberapa murah negara memperlakukan nyawa Eighty-Six.
+          </p>
+          <p>
+            Dalam cerita, Juggernaut juga memperjelas karakter Spearhead Squadron. Mereka tidak menang karena teknologi mereka superior, melainkan karena mereka memahami keterbatasan mesin itu sampai ke detail paling menyakitkan. Setiap lompatan, setiap perubahan arah, dan setiap tembakan adalah usaha untuk menambal kelemahan struktural unit yang memang tidak dirancang untuk melindungi mereka. Itulah sebabnya Juggernaut terasa rapuh sekaligus heroik: ia bukan mesin kemenangan, tetapi panggung tempat para Processor mempertahankan identitas mereka.
+          </p>
         </div>
-        <div class="war-label">AUTONOMOUS</div>
-        <div class="war-tag">ENEMY</div>
       </div>
-      <div class="war-line"></div>
-      <div class="war-cell war-cell-wide">
-        <img class="war-img" src="img/spearhead-squadron.jpg" alt="Spearhead Squadron" />
-        <div class="war-cell-overlay"></div>
-        <div class="war-cell-text">
-          <div class="war-sector">NORTHERN THEATER — SECTOR 86</div>
-          <div class="war-squad">SPEARHEAD SQUADRON</div>
+    </div>
+
+    <div class="battlefield-vertical-section battlefield-vertical-section-reverse" id="battlefield-legion">
+      <div class="battlefield-scroll-panel">
+        <div class="battlefield-large-child">
+          <p>
+            Legion adalah pasukan mesin otonom peninggalan Kekaisaran Giad yang terus bertempur setelah negara pembuatnya runtuh. Mereka bukan sekadar robot musuh yang muncul di medan perang; Legion adalah sistem perang yang dapat memproduksi, memperbaiki, mengoordinasikan, dan memperluas dirinya sendiri. Karena tidak bergantung pada moral, rasa takut, atau kelelahan manusia, Legion menciptakan tekanan yang konstan: perang tidak berhenti hanya karena satu unit dihancurkan.
+          </p>
+          <p>
+            Kekuatan Legion datang dari variasi dan jaringan. Ada unit kecil untuk pengintaian, unit tempur berat yang dapat menghancurkan garis pertahanan, artileri jarak jauh, hingga tipe komando yang mengatur operasi di area luas. Mereka membaca pola, mengepung target, dan memaksa lawan bereaksi terhadap ancaman dari banyak arah. Bagi Juggernaut yang ringan dan minim armor, menghadapi Legion berarti tidak boleh salah posisi. Satu kesalahan kecil dapat berubah menjadi kematian, karena Legion sering menang lewat jumlah, koordinasi, dan daya tahan.
+          </p>
+          <p>
+            Salah satu aspek paling menyeramkan dari Legion adalah bagaimana mereka menantang batas antara mesin dan manusia. Di balik konsep otonom, cerita memperkenalkan gagasan bahwa sebagian Legion dapat membawa jejak kesadaran atau pola pikir manusia yang telah mati. Ini membuat mereka lebih dari sekadar senjata otomatis. Mereka menjadi bayangan perang yang menyerap manusia, mengubah ingatan, trauma, dan kemampuan taktis menjadi bagian dari mesin perang itu sendiri.
+          </p>
+          <p>
+            Dalam konflik Eighty-Six, Legion berfungsi sebagai cermin brutal bagi dunia manusia. Mereka memang musuh eksternal, tetapi keberadaan mereka juga membuka kebusukan internal Republik. Republik menyebut Legion tidak manusiawi, namun di saat yang sama Republik memperlakukan Eighty-Six seperti komponen yang bisa dibuang. Karena itu, ancaman Legion bukan hanya soal kalah atau menang di medan perang. Legion memaksa pertanyaan yang lebih tajam: jika manusia membuat sistem yang menghapus manusia lain, apa bedanya mereka dari mesin yang mereka lawan?
+          </p>
         </div>
-        <div class="war-label">FRONT LINE · ACTIVE</div>
-        <div class="war-tag">CLASSIFIED</div>
+      </div>
+      <div class="battlefield-static-panel">
+        <span class="battlefield-index">02 / AUTONOMOUS ENEMY</span>
+        <h3>Legion</h3>
+        <figure class="battlefield-image-frame">
+          <img src="img/legion.jpg" alt="Legion autonomous unit"/>
+        </figure>
+        <div class="battlefield-specs">
+          <span>Networked Swarm</span>
+          <span>Heavy Variants</span>
+          <span>Self Sustaining</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="battlefield-vertical-section" id="battlefield-engagement">
+      <div class="battlefield-static-panel">
+        <span class="battlefield-index">03 / FRONT LINE</span>
+        <h3>Engagement</h3>
+        <figure class="battlefield-image-frame">
+          <img src="img/spearhead-squadron.jpg" alt="Spearhead Squadron"/>
+        </figure>
+        <div class="battlefield-specs">
+          <span>Mobility</span>
+          <span>Coordination</span>
+          <span>Survival</span>
+        </div>
+      </div>
+      <div class="battlefield-scroll-panel">
+        <div class="battlefield-large-child">
+          <p>
+            Pertarungan antara Juggernaut dan Legion selalu timpang. Juggernaut bergerak seperti pisau kecil: cepat, tajam, tetapi mudah patah. Legion bergerak seperti mesin pengepungan: lambat pada beberapa tipe, sangat cepat pada tipe lain, dan selalu didukung jaringan yang lebih besar. Spearhead Squadron bertahan karena mereka tidak memperlakukan medan perang sebagai arena duel, melainkan sebagai peta hidup yang harus dibaca terus-menerus.
+          </p>
+          <p>
+            Mereka memanfaatkan reruntuhan, jarak pandang, gangguan komunikasi, dan posisi musuh untuk menciptakan celah. Dalam situasi normal, unit ringan seperti Juggernaut seharusnya kalah oleh daya tembak Legion. Tetapi ketika dikendalikan oleh Processor berpengalaman, Juggernaut menjadi alat yang sangat presisi: masuk dari sudut yang tidak nyaman, memancing tembakan, lalu memberi ruang bagi unit lain untuk menyerang titik lemah.
+          </p>
+          <p>
+            Itulah inti medan tempur Eighty-Six: kemenangan bukan bukti sistem Republik benar, melainkan bukti bahwa para Eighty-Six terlalu terampil untuk sekadar mati sesuai rencana negara. Setiap pertempuran menunjukkan bahwa mereka bukan angka, bukan unit kosong, dan bukan "komponen" di kokpit. Mereka manusia yang dipaksa hidup di antara mesin, tetapi tetap menolak berubah menjadi mesin.
+          </p>
+        </div>
       </div>
     </div>
   </section>
 
 
   <!-- ── PARA-RAID SYNC ── -->
-  <section id="para-raid">
+  <section id="para-raid" data-color="#060608 #e8eaed" style="--section-bg:#060608;">
     <div class="pr-bg-grid"></div>
     <div class="pr-scanlines"></div>
     <div class="pr-vignette"></div>
@@ -331,7 +507,49 @@
   </section>
 
 <!-- ── CRITICAL RECEPTION ── -->
-  <section id="reception">
+  <div id="reception-footer-scene" class="reception-footer-scene">
+    <div class="rf-stars" aria-hidden="true"></div>
+    <div id="parallax-bg-3" class="parallax-bg rf-parallax-bg rf-parallax-butterflies" data-speed=".75" aria-hidden="true">
+      <span id="bg-3-1" class="rf-butterfly rf-butterfly-1">
+        <span class="rf-wing rf-wing-left"></span>
+        <span class="rf-wing rf-wing-right"></span>
+        <span class="rf-butterfly-body"></span>
+      </span>
+      <span id="bg-3-2" class="rf-butterfly rf-butterfly-2">
+        <span class="rf-wing rf-wing-left"></span>
+        <span class="rf-wing rf-wing-right"></span>
+        <span class="rf-butterfly-body"></span>
+      </span>
+      <span id="bg-3-3" class="rf-butterfly rf-butterfly-3">
+        <span class="rf-wing rf-wing-left"></span>
+        <span class="rf-wing rf-wing-right"></span>
+        <span class="rf-butterfly-body"></span>
+      </span>
+    </div>
+    <div id="parallax-bg-2" class="parallax-bg rf-parallax-bg rf-parallax-mid" data-speed=".4" aria-hidden="true">
+      <div id="bg-2-1" class="rf-cloud"></div>
+      <div id="bg-2-2" class="rf-cloud"></div>
+      <div id="bg-2-3" class="rf-cloud"></div>
+      <div id="bg-2-4" class="rf-cloud"></div>
+      <div id="bg-2-5" class="rf-cloud"></div>
+      <div id="bg-2-6" class="rf-cloud"></div>
+      <div id="bg-2-7" class="rf-cloud"></div>
+      <div id="bg-2-8" class="rf-cloud"></div>
+    </div>
+    <div id="parallax-bg-1" class="parallax-bg rf-parallax-bg rf-parallax-back" data-speed=".25" aria-hidden="true">
+      <div id="bg-1-1" class="rf-haze"></div>
+      <div id="bg-1-2" class="rf-haze"></div>
+      <div id="bg-1-3" class="rf-haze"></div>
+      <div id="bg-1-4" class="rf-haze"></div>
+      <div id="bg-1-5" class="rf-haze"></div>
+      <div id="bg-1-6" class="rf-haze"></div>
+      <div id="bg-1-7" class="rf-haze"></div>
+    </div>
+    <div id="ground" class="rf-ground" aria-hidden="true"></div>
+    <div class="rf-cloud rf-footer-cloud rf-footer-cloud-b" aria-hidden="true"></div>
+    <div class="rf-haze rf-footer-cloud rf-footer-cloud-c" aria-hidden="true"></div>
+
+  <section id="reception" data-color="#04050d #e8eaed" style="--section-bg:#04050d;">
     <div class="rc-inner">
       <span class="rc-label">EVALUATION</span>
       <h2 class="rc-title">Critical Reception</h2>
@@ -380,129 +598,203 @@
     </div>
   </section>
 
-  <!-- ── KEY THEMES ── -->
-  <section id="key-themes">
-    <div class="kt-inner">
+  <!-- ── KEY THEMES — vertical timeline ── -->
+  <section id="key-themes" data-color="#04050d #e8eaed" style="--section-bg:#04050d;">
+
+    <header class="kt-header">
       <span class="kt-label">EXPLORATION</span>
       <h2 class="kt-title">Key Themes</h2>
       <div class="kt-divider"></div>
+    </header>
 
-      <div class="kt-tags">
-        <span class="kt-tag">War &amp; Identity</span>
-        <span class="kt-tag">Humanity</span>
-        <span class="kt-tag">Sacrifice</span>
-        <span class="kt-tag">Connection</span>
-        <span class="kt-tag">Freedom</span>
+    <section class="kt-timeline" aria-label="Key themes timeline">
+      <div class="kt-timeline__inner">
+
+        <div class="kt-timeline__lines" aria-hidden="true">
+          <div class="kt-timeline__line kt-timeline__line--base"></div>
+          <div class="kt-timeline__line kt-timeline__line--fill"></div>
+        </div>
+
+        <!-- ITEM 1 -->
+        <article class="kt-timeline__item" data-side="left">
+          <div class="kt-timeline__col kt-timeline__col--content">
+            <div class="kt-timeline__tag">01 · WAR &amp; IDENTITY</div>
+            <h3 class="kt-timeline__heading">War as<br>Dehumanization</h3>
+            <p class="kt-timeline__text">The Republic strips the Eighty-Six of their names, their rights, and their humanity — reducing soldiers to numbers. Yet they resist, keeping their identities alive through bonds forged in battle.</p>
+          </div>
+          <div class="kt-timeline__col kt-timeline__col--marker" aria-hidden="true">
+            <span class="kt-timeline__dot"><span class="kt-timeline__dotBase"></span><span class="kt-timeline__dotFill"></span></span>
+          </div>
+          <div class="kt-timeline__col kt-timeline__col--media">
+            <div class="kt-timeline__mediaBox">
+              <img class="kt-image kt-image--1" src="img/kt-1.jpg" alt="Eighty-Six war and identity visual" loading="lazy"/>
+            </div>
+          </div>
+        </article>
+
+        <!-- ITEM 2 -->
+        <article class="kt-timeline__item" data-side="right">
+          <div class="kt-timeline__col kt-timeline__col--media">
+            <div class="kt-timeline__mediaBox">
+              <img class="kt-image kt-image--2" src="img/kt-2.png" alt="Para-RAID connection visual" loading="lazy"/>
+            </div>
+          </div>
+          <div class="kt-timeline__col kt-timeline__col--marker" aria-hidden="true">
+            <span class="kt-timeline__dot"><span class="kt-timeline__dotBase"></span><span class="kt-timeline__dotFill"></span></span>
+          </div>
+          <div class="kt-timeline__col kt-timeline__col--content">
+            <div class="kt-timeline__tag">02 · CONNECTION</div>
+            <h3 class="kt-timeline__heading">Connection Across<br>Distance</h3>
+            <p class="kt-timeline__text">Through the Para-RAID system, Lena and Shin bridge two irreconcilable worlds — the privileged and the forgotten. Their bond becomes the emotional core of the series.</p>
+          </div>
+        </article>
+
+        <!-- ITEM 3 -->
+        <article class="kt-timeline__item" data-side="left">
+          <div class="kt-timeline__col kt-timeline__col--content">
+            <div class="kt-timeline__tag">03 · REMEMBRANCE</div>
+            <h3 class="kt-timeline__heading">Death &amp;<br>Remembrance</h3>
+            <p class="kt-timeline__text">Shinei carries the voices of the dead — a burden that defines him. 86 asks who is responsible for honoring those the world has chosen to forget.</p>
+          </div>
+          <div class="kt-timeline__col kt-timeline__col--marker" aria-hidden="true">
+            <span class="kt-timeline__dot"><span class="kt-timeline__dotBase"></span><span class="kt-timeline__dotFill"></span></span>
+          </div>
+          <div class="kt-timeline__col kt-timeline__col--media">
+            <div class="kt-timeline__mediaBox">
+              <img class="kt-image kt-image--3" src="img/kt-3.jpg" alt="Death and remembrance visual" loading="lazy"/>
+            </div>
+          </div>
+        </article>
+
+        <!-- ITEM 4 -->
+        <article class="kt-timeline__item" data-side="right">
+          <div class="kt-timeline__col kt-timeline__col--media">
+            <div class="kt-timeline__mediaBox">
+              <img class="kt-image kt-image--4" src="img/kt-4.jpg" alt="Freedom beyond the battlefield visual" loading="lazy"/>
+            </div>
+          </div>
+          <div class="kt-timeline__col kt-timeline__col--marker" aria-hidden="true">
+            <span class="kt-timeline__dot"><span class="kt-timeline__dotBase"></span><span class="kt-timeline__dotFill"></span></span>
+          </div>
+          <div class="kt-timeline__col kt-timeline__col--content">
+            <div class="kt-timeline__tag">04 · FREEDOM</div>
+            <h3 class="kt-timeline__heading">The Meaning<br>of Freedom</h3>
+            <p class="kt-timeline__text">For the Eighty-Six, freedom is not a right — it is something earned through blood. The night sky becomes their symbol of a world beyond the battlefield.</p>
+          </div>
+        </article>
+
       </div>
-
-      <div class="kt-cards">
-
-        <div class="kt-card">
-          <div class="kt-card-icon"><img src="img/icon-war.svg" alt=""/></div>
-          <div class="kt-card-title">War as Dehumanization</div>
-          <div class="kt-card-text">The Republic strips the Eighty-Six of their names, their rights, and their humanity — reducing soldiers to numbers. Yet they resist, keeping their identities alive through bonds forged in battle.</div>
-        </div>
-
-        <div class="kt-card">
-          <div class="kt-card-icon"><img src="img/icon-signal.svg" alt=""/></div>
-          <div class="kt-card-title">Connection Across Distance</div>
-          <div class="kt-card-text">Through the Para-RAID system, Lena and Shin bridge two irreconcilable worlds — the privileged and the forgotten. Their bond becomes the emotional core of the series.</div>
-        </div>
-
-        <div class="kt-card">
-          <div class="kt-card-icon"><img src="img/icon-death.svg" alt=""/></div>
-          <div class="kt-card-title">Death &amp; Remembrance</div>
-          <div class="kt-card-text">Shinei carries the voices of the dead — a burden that defines him. 86 asks who is responsible for honoring those the world has chosen to forget.</div>
-        </div>
-
-        <div class="kt-card">
-          <div class="kt-card-icon"><img src="img/icon-sky.svg" alt=""/></div>
-          <div class="kt-card-title">The Meaning of Freedom</div>
-          <div class="kt-card-text">For the Eighty-Six, freedom is not a right — it is something earned through blood. The night sky becomes their symbol of a world beyond the battlefield.</div>
-        </div>
-
-      </div>
-    </div>
+    </section>
   </section>
 
+
   <!-- ── FOOTER ── -->
-  <footer class="site-footer">
-    <div class="footer-top">
-      <div>
-        <div class="footer-brand">八十六区</div>
-        <span class="footer-brand-sub">Eighty-Six · A-1 Pictures · 2021</span>
-        <span class="footer-brand-sub" style="margin-top:4px">Based on novel by Asato Asato</span>
-      </div>
+  <!-- ── FOOTER ── -->
+  <footer class="site-footer" data-color="#04050d #e8eaed" style="--section-bg:#04050d;">
 
-      <!-- Center -->
-      <div class="footer-center">
-        <div class="footer-center-quote">
-          "To the Spearhead Squadron.<br>
-          Their names are not forgotten."
+    <!-- Top divider line -->
+    <div class="footer-divider-top">
+      <div class="footer-divider-line"></div>
+      <div class="footer-divider-emblem">八十六区</div>
+      <div class="footer-divider-line"></div>
+    </div>
+
+    <!-- Main grid -->
+    <div class="footer-main">
+
+      <!-- Left: Brand -->
+      <div class="footer-col footer-col--brand">
+        <div class="footer-brand-kanji">八十六区</div>
+        <div class="footer-brand-en">EIGHTY-SIX</div>
+        <div class="footer-brand-meta">
+          <span>A-1 Pictures · 2021</span>
+          <span>Based on novel by Asato Asato</span>
+          <span>Directed by Toshimasa Ishii</span>
         </div>
-        <div class="footer-center-dedication">— 八十六区 · EIGHTY-SIX —</div>
-        <div class="footer-center-line"></div>
       </div>
 
-      <nav class="footer-links">
-        <a href="#hero">Hero</a>
-        <a href="#synopsis">Synopsis</a>
-        <a href="#characters">Characters</a>
-        <a href="#quotes">Quotes</a>
-        <a href="#war">Battlefield</a>
-        <a href="#para-raid">Para-RAID</a>
-        <a href="#reception">Reception</a>
-      </nav>
+      <!-- Center: Quote + dedication -->
+      <div class="footer-col footer-col--center">
+        <div class="footer-quote-mark">"</div>
+        <blockquote class="footer-quote">
+          To the Spearhead Squadron.<br>
+          Their names are not forgotten.
+        </blockquote>
+        <div class="footer-dedication">— 八十六区 · EIGHTY-SIX —</div>
+        <div class="footer-sigil">
+          <div class="footer-sigil-line"></div>
+          <span class="footer-sigil-dot"></span>
+          <div class="footer-sigil-line"></div>
+        </div>
+      </div>
+
+      <!-- Right: Nav -->
     </div>
-    <div class="footer-bottom">
-      <span class="footer-copy">Eighty-Six · Spearhead Squadron · San Magnolia</span>
-      <span class="footer-author-new">Made by <strong>Rafif Syandana</strong></span>
-    </div>
+
   </footer>
+  </div>
 
   <!-- ── SCRIPTS ── -->
   <script src="js/loader.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.3/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.3/ScrollTrigger.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.20/dist/lenis.min.js"></script>
   <script src="js/app.js"></script>
-  <script src="js/glitch.js"></script>
+  <script src="js/synopsis.js"></script>
+  <script src="js/glitch.js?v=cinematic-guard-1"></script>
   <script src="js/scroll.js"></script>
   <script src="js/particles.js"></script>
   <script src="js/weather.js"></script>
   <script src="js/typed.js"></script>
   <script src="js/navbar.js"></script>
+  <script src="js/characters.js?v=anchor-sync-1"></script>
   <script src="js/scroll-effects.js"></script>
   <script src="js/cursor.js"></script>
   <script src="js/para-raid.js"></script>
   <script src="js/reception-themes.js"></script>
   <script src="js/atmosphere.js"></script>
+  <script src="js/gsap-cinematic.js?v=battlefield-lateral-1"></script>
+  <script src="js/section-parallax.js?v=no-lightsaber-1"></script>
+  <script src="js/transitions.js"></script>
+  <script src="js/section-bg-transition.js"></script>
+  <script src="js/section-transition.js"></script>
+  <script src="js/para-raid-cinematic.js"></script>
   <script>
-    const lenis = new Lenis({
-      lerp: 0.12,
+    window.__lenis__ = window.__lenis__ || new Lenis({
+      duration: 1.2,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       smoothWheel: true,
-      wheelMultiplier: 0.9,
+      wheelMultiplier: 0.65,
       syncTouch: false,
-      touchMultiplier: 1.5,
+      touchMultiplier: 1.15,
     });
 
-    // Expose to window so scroll-effects.js can hook in
-    window.__lenis__ = lenis;
-
-    lenis.on('scroll', ({ scroll }) => {
-      // dispatch to scroll-effects if loaded after
-    });
-
-    function raf(time) {
-      lenis.raf(time);
+    if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
+      gsap.registerPlugin(ScrollTrigger);
+      if (!window.__lenisScrollTriggerSync) {
+        window.__lenis__.on('scroll', ScrollTrigger.update);
+        window.__lenisScrollTriggerSync = true;
+      }
+      if (!window.__lenisGsapTicker) {
+        gsap.ticker.add((time) => window.__lenis__.raf(time * 1000));
+        gsap.ticker.lagSmoothing(0);
+        window.__lenisGsapTicker = true;
+      }
+    } else if (!window.__lenisNativeRaf) {
+      const raf = (time) => {
+        window.__lenis__.raf(time);
+        requestAnimationFrame(raf);
+      };
       requestAnimationFrame(raf);
+      window.__lenisNativeRaf = true;
     }
-    requestAnimationFrame(raf);
 
     // Anchor links with Lenis
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       anchor.addEventListener('click', e => {
         e.preventDefault();
         const target = document.querySelector(anchor.getAttribute('href'));
-        if (target) lenis.scrollTo(target, { offset: -56, duration: 1.2 });
+        if (target) window.__lenis__.scrollTo(target, { offset: -56, duration: 1.2 });
       });
     });
   </script>

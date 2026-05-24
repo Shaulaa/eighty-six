@@ -32,9 +32,11 @@ function init() {
   const cards = [...document.querySelectorAll('.char-card')];
 
   /* ── QUOTES ── */
+  const quotesSection = document.getElementById('quotes');
   const qbs = [...document.querySelectorAll('.quote-block')];
 
   /* ── BATTLEFIELD ── */
+  const warSection = document.getElementById('war');
   const warCells = [...document.querySelectorAll('.war-cell:not(.war-cell-wide)')];
   const wideW    = document.querySelector('.war-cell-wide');
   const wideI    = wideW?.querySelector('.war-img');
@@ -120,24 +122,8 @@ function init() {
       tagEl.style.opacity   = `${clamp(1-hp*3,0,1)}`;
     }
 
-    /* ══ SYNOPSIS ══ */
-    if (synL) {
-      const p   = prog(synL.getBoundingClientRect().top, vh*.95, vh*.1);
-      const stx = mobile ? (1-p)*-30 : (1-p)*-50;
-      synL.style.transform = `translate3d(${stx}px,0,0)`;
-      synL.style.opacity   = `${clamp(p*1.8,0,1)}`;
-    }
-    if (synR) {
-      const p   = prog(synR.getBoundingClientRect().top, vh*.95, vh*.1);
-      const stx = mobile ? (1-p)*30 : (1-p)*50;
-      synR.style.transform = `translate3d(${stx}px,0,0)`;
-      synR.style.opacity   = `${clamp(p*1.8,0,1)}`;
-    }
-    if (synI) {
-      const r  = synI.closest('.synopsis-img').getBoundingClientRect();
-      const cy = (r.top + r.height/2 - vh/2) / vh;
-      synI.style.transform = `translate3d(0,${cy*(mobile?20:40)}px,0) scale(1.1)`;
-    }
+    /* ══ SYNOPSIS ══ — handled by synopsis.js GSAP timeline */
+    // synL / synR / synI parallax removed; synopsis.js owns this section
 
     /* ══ CHAR CARDS ══ */
     cards.forEach((card,i) => {
@@ -154,59 +140,63 @@ function init() {
     });
 
     /* ══ QUOTES ══ */
-    qbs.forEach((b,i) => {
-      const p   = prog(b.getBoundingClientRect().top, vh*.88, vh*.1);
-      const dir = i%2===0?-1:1;
-      const tx  = mobile ? dir*(1-p)*20 : dir*(1-p)*35;
-      b.style.transform = `translate3d(${tx}px,0,0)`;
-      b.style.opacity   = `${clamp(p*2,0,1)}`;
-    });
-
-    /* ══ BATTLEFIELD ══ */
-    warCells.forEach((cell,i) => {
-      const r   = cell.getBoundingClientRect();
-      const p   = prog(r.top, vh*1.0, vh*0.3);
-      const cy  = (r.top + r.height/2 - vh/2) / vh;
-      const dir = i===0 ? -1 : 1;
-      const slideX = mobile ? 0 : dir*(1-p)*60;
-      const driftY = cy * (mobile?16:30);
-
-      cell.style.transform = `translate3d(${slideX}px, ${driftY}px, 0)`;
-      cell.style.opacity   = `${clamp(p*2,0,1)}`;
-
-      const img = cell.querySelector('.war-img');
-      if (img) {
-        img.style.transform = `translate3d(0, ${cy*(mobile?14:28)}px, 0) scale(1.1)`;
-        img.style.filter    = `brightness(${0.4+p*0.65}) saturate(${0.5+p*0.65})`;
-        img.style.transition = 'filter 0.4s ease';
-      }
-    });
-
-    if (wideW) {
-      const r  = wideW.getBoundingClientRect();
-      const p  = prog(r.top, vh*0.95, vh*0.1);
-      const cy = (r.top + r.height/2 - vh/2) / vh;
-
-      wideW.style.transform = `translate3d(0, ${(1-p)*30 + cy*(mobile?10:12)}px, 0)`;
-      wideW.style.opacity   = `${clamp(p*1.8,0,1)}`;
-
-      if (wideI) {
-        wideI.style.transform  = `translate3d(0, ${cy*(mobile?14:28)}px, 0) scale(${1.1-p*0.06})`;
-        wideI.style.filter     = `brightness(${0.3+p*0.8})`;
-        wideI.style.transition = 'filter 0.5s ease';
-      }
-      if (wideT) {
-        wideT.style.transform = `translate3d(0, ${(1-p)*35}px, 0)`;
-        wideT.style.opacity   = `${clamp(p*2.2-0.8,0,1)}`;
-      }
+    if (!quotesSection?.classList.contains('quotes-scroll-cinematic')) {
+      qbs.forEach((b,i) => {
+        const p   = prog(b.getBoundingClientRect().top, vh*.88, vh*.1);
+        const dir = i%2===0?-1:1;
+        const tx  = mobile ? dir*(1-p)*20 : dir*(1-p)*35;
+        b.style.transform = `translate3d(${tx}px,0,0)`;
+        b.style.opacity   = `${clamp(p*2,0,1)}`;
+      });
     }
 
-    if (warLine) {
-      const r = warLine.getBoundingClientRect();
-      const p = prog(r.top, vh, vh*0.4);
-      warLine.style.transform       = `scaleX(${p})`;
-      warLine.style.transformOrigin = 'center';
-      warLine.style.opacity         = `${p}`;
+    /* ══ BATTLEFIELD ══ */
+    if (!warSection?.classList.contains('war-scroll-cinematic')) {
+      warCells.forEach((cell,i) => {
+        const r   = cell.getBoundingClientRect();
+        const p   = prog(r.top, vh*1.0, vh*0.3);
+        const cy  = (r.top + r.height/2 - vh/2) / vh;
+        const dir = i===0 ? -1 : 1;
+        const slideX = mobile ? 0 : dir*(1-p)*60;
+        const driftY = cy * (mobile?16:30);
+
+        cell.style.transform = `translate3d(${slideX}px, ${driftY}px, 0)`;
+        cell.style.opacity   = `${clamp(p*2,0,1)}`;
+
+        const img = cell.querySelector('.war-img');
+        if (img) {
+          img.style.transform = `translate3d(0, ${cy*(mobile?14:28)}px, 0) scale(1.1)`;
+          img.style.filter    = `brightness(${0.4+p*0.65}) saturate(${0.5+p*0.65})`;
+          img.style.transition = 'filter 0.4s ease';
+        }
+      });
+
+      if (wideW) {
+        const r  = wideW.getBoundingClientRect();
+        const p  = prog(r.top, vh*0.95, vh*0.1);
+        const cy = (r.top + r.height/2 - vh/2) / vh;
+
+        wideW.style.transform = `translate3d(0, ${(1-p)*30 + cy*(mobile?10:12)}px, 0)`;
+        wideW.style.opacity   = `${clamp(p*1.8,0,1)}`;
+
+        if (wideI) {
+          wideI.style.transform  = `translate3d(0, ${cy*(mobile?14:28)}px, 0) scale(${1.1-p*0.06})`;
+          wideI.style.filter     = `brightness(${0.3+p*0.8})`;
+          wideI.style.transition = 'filter 0.5s ease';
+        }
+        if (wideT) {
+          wideT.style.transform = `translate3d(0, ${(1-p)*35}px, 0)`;
+          wideT.style.opacity   = `${clamp(p*2.2-0.8,0,1)}`;
+        }
+      }
+
+      if (warLine) {
+        const r = warLine.getBoundingClientRect();
+        const p = prog(r.top, vh, vh*0.4);
+        warLine.style.transform       = `scaleX(${p})`;
+        warLine.style.transformOrigin = 'center';
+        warLine.style.opacity         = `${p}`;
+      }
     }
 
     /* ══ PARA-RAID ══ */

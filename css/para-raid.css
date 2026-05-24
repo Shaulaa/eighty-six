@@ -8,12 +8,8 @@
   position: relative;
   background: #060608;
   padding: 0;
-  overflow: hidden;
+  /* overflow: hidden removed — GSAP pin needs visible overflow on scroll container */
   min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
 }
 
 /* ── BACKGROUND EFFECTS ── */

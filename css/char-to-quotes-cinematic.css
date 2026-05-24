@@ -1,0 +1,296 @@
+/* ============================================
+   char-to-quotes-cinematic.css — EIGHTY-SIX
+   Cinematic bridge: char-horizontal → quotes
+   + Para-RAID GIF parallax layer
+   ============================================ */
+
+/* ── Fix the ugly negative margin gap ── */
+.char-horizontal {
+  margin-bottom: 0 !important;
+}
+.char-horizontal + .quotes {
+  margin-top: 0 !important;
+}
+
+/* ══════════════════════════════════════════════
+   BRIDGE OVERLAY (on top of char-horizontal)
+══════════════════════════════════════════════ */
+#cq-bridge {
+  position: absolute;
+  inset: 0;
+  z-index: 100;
+  pointer-events: none;
+  opacity: 0;
+}
+
+.cq-film-top,
+.cq-film-bot {
+  position: absolute;
+  left: 0;
+  right: 0;
+  background: #000;
+  z-index: 10;
+}
+.cq-film-top {
+  top: 0;
+  height: 10%;
+  min-height: 56px;
+}
+.cq-film-bot {
+  bottom: 0;
+  height: 10%;
+  min-height: 56px;
+}
+
+.cq-vignette {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 100% 100% at 50% 50%,
+    rgba(0,0,0,0) 20%,
+    rgba(0,0,0,0.97) 100%);
+  z-index: 5;
+  opacity: 0;
+}
+
+.cq-grain {
+  position: absolute;
+  inset: 0;
+  z-index: 6;
+  pointer-events: none;
+  opacity: 0.07;
+  animation: cqGrainShift 0.09s steps(1) infinite;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 180px 180px;
+}
+@keyframes cqGrainShift {
+  0%  { background-position: 0 0; }
+  25% { background-position: -40px 20px; }
+  50% { background-position: 15px -35px; }
+  75% { background-position: -25px 50px; }
+}
+
+.cq-glitch-line {
+  position: absolute;
+  left: 0; right: 0;
+  top: 50%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(192,41,43,0.8), transparent);
+  z-index: 8;
+  opacity: 0;
+  transform-origin: center center;
+}
+
+.cq-label {
+  position: absolute;
+  bottom: 12%;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: 'Orbitron', monospace;
+  font-size: clamp(7px, 0.85vw, 10px);
+  letter-spacing: 0.5em;
+  color: rgba(192, 41, 43, 0.8);
+  text-transform: uppercase;
+  white-space: nowrap;
+  z-index: 9;
+  opacity: 0;
+}
+
+/* ══════════════════════════════════════════════
+   QUOTES ENTRY VEIL
+══════════════════════════════════════════════ */
+#quotes-entry-veil {
+  position: absolute;
+  inset: 0;
+  background: #000;
+  z-index: 50;
+  pointer-events: none;
+  opacity: 1;
+}
+
+/* Ensure quotes section is relatively positioned */
+.quotes {
+  position: relative;
+  overflow: hidden;
+}
+
+/* ── Quotes blocks start invisible (handled via JS) ── */
+.quote-block {
+  will-change: opacity, transform, filter;
+}
+
+/* ══════════════════════════════════════════════
+   PARA-RAID GIF CINEMATIC LAYER
+══════════════════════════════════════════════ */
+#prc-gif-layer {
+  position: absolute;
+  inset: 0;
+  z-index: 4;           /* above grid/scanlines, below pr-inner */
+  pointer-events: none;
+  overflow: hidden;
+  opacity: 0;
+}
+
+.prc-gif-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+  display: block;
+  will-change: transform;
+  filter: brightness(0.45) saturate(0.7) contrast(1.1);
+  transform-origin: center center;
+}
+
+.prc-gif-letterbox-top,
+.prc-gif-letterbox-bot {
+  position: absolute;
+  left: 0;
+  right: 0;
+  background: #000;
+  z-index: 20;
+}
+.prc-gif-letterbox-top {
+  top: 0;
+  height: 11%;
+  min-height: 60px;
+}
+.prc-gif-letterbox-bot {
+  bottom: 0;
+  height: 11%;
+  min-height: 60px;
+}
+
+.prc-gif-vignette {
+  position: absolute;
+  inset: 0;
+  z-index: 12;
+  background: radial-gradient(ellipse 90% 90% at 50% 50%,
+    transparent 30%,
+    rgba(0,0,0,0.75) 100%);
+  pointer-events: none;
+}
+
+.prc-gif-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 11;
+  background: linear-gradient(
+    180deg,
+    rgba(0,0,0,0.6) 0%,
+    rgba(6,6,8,0.25) 40%,
+    rgba(6,6,8,0.25) 60%,
+    rgba(0,0,0,0.7) 100%
+  );
+  pointer-events: none;
+}
+
+.prc-gif-grain {
+  position: absolute;
+  inset: 0;
+  z-index: 13;
+  opacity: 0.06;
+  pointer-events: none;
+  animation: cqGrainShift 0.085s steps(1) infinite;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 180px 180px;
+}
+
+.prc-gif-scanlines {
+  position: absolute;
+  inset: 0;
+  z-index: 14;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0,0,0,0.08) 2px,
+    rgba(0,0,0,0.08) 4px
+  );
+  pointer-events: none;
+}
+
+/* ── HUD overlay ── */
+.prc-gif-hud {
+  position: absolute;
+  inset: 0;
+  z-index: 18;
+  pointer-events: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: clamp(60px, 10%, 90px) clamp(28px, 4vw, 60px);
+}
+
+.prc-gif-hud-tl {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.prc-gif-hud-tag {
+  font-family: 'Orbitron', monospace;
+  font-size: clamp(7px, 0.75vw, 9px);
+  letter-spacing: 0.3em;
+  color: rgba(192, 41, 43, 0.85);
+  text-transform: uppercase;
+}
+
+.prc-gif-hud-freq {
+  font-family: 'Orbitron', monospace;
+  font-size: clamp(8px, 0.85vw, 10px);
+  letter-spacing: 0.2em;
+  color: rgba(255,255,255,0.5);
+  text-transform: uppercase;
+}
+
+.prc-gif-hud-br {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.prc-gif-hud-stat {
+  font-family: 'Orbitron', monospace;
+  font-size: clamp(7px, 0.75vw, 9px);
+  letter-spacing: 0.25em;
+  color: rgba(192, 41, 43, 0.9);
+  text-transform: uppercase;
+}
+
+.prc-gif-hud-stat.blink {
+  animation: prcBlink 1.2s ease-in-out infinite;
+}
+@keyframes prcBlink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.2; }
+}
+
+/* ── Ensure para-raid inner content sits above gif ── */
+#para-raid {
+  position: relative;
+}
+#para-raid .pr-inner,
+#para-raid .pr-radar-wrap {
+  position: relative;
+  z-index: 20;
+}
+#para-raid .pr-bg-grid,
+#para-raid .pr-scanlines,
+#para-raid .pr-vignette,
+#para-raid .pr-noise {
+  z-index: 5;
+}
+
+/* ── Mobile: disable gif parallax, simpler treatment ── */
+@media (max-width: 768px) {
+  #prc-gif-layer {
+    display: none;
+  }
+  #quotes-entry-veil {
+    display: none;
+  }
+  #cq-bridge {
+    display: none;
+  }
+}

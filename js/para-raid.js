@@ -111,6 +111,7 @@ function initNeuralCanvas() {
 
   function draw() {
     const W = canvas.width, H = canvas.height;
+    if (!W || !H) { requestAnimationFrame(draw); return; }
     ctx.clearRect(0, 0, W, H);
     t += 0.012;
 
@@ -275,6 +276,7 @@ function initECGCanvas() {
     ctx.shadowBlur = 0;
 
     /* Moving scan line */
+    if (!W || !H || !isFinite(W) || !isFinite(H)) { requestAnimationFrame(draw); return; }
     const scanX = (offset / (Math.PI*4)) * W % W;
     const grad = ctx.createLinearGradient(scanX-40, 0, scanX, 0);
     grad.addColorStop(0, 'transparent');

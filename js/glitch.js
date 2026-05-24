@@ -33,6 +33,8 @@ function init() {
   const wideI = wideW?.querySelector('.war-img');
   const wideT = wideW?.querySelector('.war-cell-text');
   const qbs   = [...document.querySelectorAll('.quote-block')];
+  const quotesSection = document.getElementById('quotes');
+  const warSection = document.getElementById('war');
 
   /* ── SMOOTH STATE ── */
   let sy=window.scrollY, tsy=sy;
@@ -115,22 +117,7 @@ function init() {
       }
     }
 
-    /* ══ SYNOPSIS ══ */
-    if (synL) {
-      const p = prog(synL.getBoundingClientRect().top, vh*.95, vh*.1);
-      synL.style.transform = `translate3d(${(1-p)*-80}px,0,0)`;
-      synL.style.opacity   = `${clamp(p*1.8,0,1)}`;
-    }
-    if (synR) {
-      const p = prog(synR.getBoundingClientRect().top, vh*.95, vh*.1);
-      synR.style.transform = `translate3d(${(1-p)*80}px,0,0)`;
-      synR.style.opacity   = `${clamp(p*1.8,0,1)}`;
-    }
-    if (synI) {
-      const r  = synI.closest('.synopsis-img').getBoundingClientRect();
-      const cy = (r.top + r.height/2 - vh/2) / vh;
-      synI.style.transform = `translate3d(0,${cy*70}px,0) scale(1.16)`;
-    }
+    /* ══ SYNOPSIS ══ — handled by synopsis.js */
 
     /* ══ CHAR CARDS ══ */
     cards.forEach((card,i) => {
@@ -149,7 +136,8 @@ function init() {
     });
 
     /* ══ WAR ══ */
-    smWar.forEach((cell,i) => {
+    if (!warSection?.classList.contains('war-scroll-cinematic')) {
+      smWar.forEach((cell,i) => {
       const r   = cell.getBoundingClientRect();
       const p   = prog(r.top, vh*.9, vh*.25);
       const cy  = (r.top + r.height/2 - vh/2) / vh;
@@ -163,9 +151,9 @@ function init() {
         img.style.transform = `translate3d(0,${cy*60}px,0) scale(1.18)`;
         img.style.filter    = `brightness(${.35+p*.75}) saturate(${.5+p*.7})`;
       }
-    });
+      });
 
-    if (wideW) {
+      if (wideW) {
       const r  = wideW.getBoundingClientRect();
       const p  = prog(r.top, vh*.85, vh*.1);
       const cy = (r.top + r.height/2 - vh/2) / vh;
@@ -180,15 +168,18 @@ function init() {
         wideT.style.transform = `translate3d(0,${(1-p)*40}px,0)`;
         wideT.style.opacity   = `${clamp(p*2-.8,0,1)}`;
       }
+      }
     }
 
     /* ══ QUOTES ══ */
-    qbs.forEach((b,i) => {
+    if (!quotesSection?.classList.contains('quotes-scroll-cinematic')) {
+      qbs.forEach((b,i) => {
       const p   = prog(b.getBoundingClientRect().top, vh*.88, vh*.1);
       const dir = i%2===0?-1:1;
       b.style.transform = `translate3d(${dir*(1-p)*55}px,0,0)`;
       b.style.opacity   = `${clamp(p*2,0,1)}`;
-    });
+      });
+    }
 
   })();
 }
