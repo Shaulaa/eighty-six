@@ -172,6 +172,15 @@ function initSynopsisCinematic() {
   /* Phase 7 — credit */
   tlMain.to(credit, { opacity: 1, duration: 0.4 }, 1.8);
 
+  /* Phase 8 — clear the synopsis before characters enter */
+  tlMain.to(panelMain, {
+    opacity: 0,
+    y: -72,
+    filter: 'blur(8px)',
+    duration: 0.65,
+    ease: 'power2.inOut'
+  }, 2.45);
+
   /* ═══════════════════════════════════════════
      PORTRAIT PARALLAX (Lenis-driven)
   ═══════════════════════════════════════════ */

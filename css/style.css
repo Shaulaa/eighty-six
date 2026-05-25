@@ -90,7 +90,7 @@ body > footer {
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  background: #0a0a0b;
+  background: #04050d;
   isolation: isolate;
 }
 
@@ -314,7 +314,7 @@ body > footer {
 /* ── SYNOPSIS CINEMATIC ── */
 .synopsis {
   position: relative;
-  background: #080a0e;
+  background: #04050d;
   color: #e8eaed;
   overflow: hidden;
 }
@@ -323,7 +323,7 @@ body > footer {
 .syn-bg-layer {
   position: absolute;
   inset: 0;
-  background: #080a0e;
+  background: #04050d;
   pointer-events: none;
   z-index: 0;
 }
@@ -480,7 +480,7 @@ body > footer {
   aspect-ratio: 3/4;
   overflow: hidden;
   border: 1px solid rgba(192,41,43,0.25);
-  background: #050608;
+  background: #04050d;
 }
 
 /* corner brackets */
@@ -1281,12 +1281,12 @@ body > footer {
 }
 
 .synopsis {
-  background: #080a0e !important;
-  background-color: #080a0e !important;
+  background: #04050d !important;
+  background-color: #04050d !important;
 }
 
 .synopsis > .section-breath-veil {
-  background: #080a0e !important;
+  background: #04050d !important;
 }
 
 /* ── TRANSITION: Battlefield → Para-RAID ── */

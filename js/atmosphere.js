@@ -41,9 +41,9 @@ function initSectionFog() {
 
   /* Section color palette — each section has a fog color */
   const sections = [
-    { id: 'hero',       color: [10,  10,  11],  fogMax: 0    },
-    { id: 'synopsis',   color: [240, 238, 233], fogMax: 0    },
-    { id: 'characters', color: [10,  10,  11],  fogMax: 0    },
+    { id: 'hero',       color: [4,   5,   13],  fogMax: 0    },
+    { id: 'synopsis',   color: [4,   5,   13],  fogMax: 0    },
+    { id: 'characters', color: [4,   5,   13],  fogMax: 0    },
     { id: 'quotes',     color: [20,  15,  25],  fogMax: 0.08 },
     { id: 'war',        color: [10,  10,  11],  fogMax: 0    },
     { id: 'para-raid',  color: [6,   6,   8],   fogMax: 0.06 },

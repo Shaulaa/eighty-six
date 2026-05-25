@@ -21,7 +21,7 @@
   background-color: #080a0e;
   background:
     radial-gradient(circle at 50% 42%, rgba(197, 40, 45, 0.08), transparent 30%),
-    linear-gradient(180deg, #040507 0%, #08090d 68%, #050608 100%);
+    linear-gradient(180deg, #040507 0%, #07080d 68%, #04050d 100%);
   color: var(--hero-white);
   z-index: 1;
 }
@@ -239,7 +239,7 @@
   aspect-ratio: 1;
   z-index: 7;
   border-radius: 50%;
-  background: #080a0e;
+  background: #04050d;
   transform: translate(-50%, -50%) scale(0.006);
   transform-origin: center;
   pointer-events: none;
@@ -314,6 +314,7 @@
   color: var(--hero-white);
   text-shadow: none;
   animation: heroTitleJitter 6s steps(1) infinite;
+  will-change: transform, filter;
 }
 
 .hero-line-1,
@@ -360,6 +361,27 @@
   animation: heroGlitchSlices 0.72s steps(2, end) both;
 }
 
+.hero-title-big.is-hard-glitch {
+  filter: contrast(1.45) brightness(1.08);
+  animation: heroHardGlitch 0.58s steps(2, end) both;
+}
+
+.hero-title-big.is-hard-glitch .hero-line-1::before,
+.hero-title-big.is-hard-glitch .hero-line-2::before {
+  opacity: 0.78;
+  color: rgba(255, 255, 255, 0.92);
+  text-shadow: -10px 0 rgba(0, 255, 200, 0.44);
+  animation: heroGlitchSlicesHard 0.58s steps(2, end) both;
+}
+
+.hero-title-big.is-hard-glitch .hero-line-1::after,
+.hero-title-big.is-hard-glitch .hero-line-2::after {
+  opacity: 0.88;
+  color: rgba(197, 40, 45, 1);
+  text-shadow: 12px 0 rgba(197, 40, 45, 0.56);
+  animation: heroGlitchSlicesHard 0.58s steps(2, end) reverse both;
+}
+
 .hero-line-1 {
   color: var(--hero-red);
 }
@@ -384,6 +406,26 @@
   52% { opacity: 0.7; transform: translateX(5px); }
   68% { opacity: 0.35; transform: translateX(-4px); }
   82% { opacity: 0; transform: translateX(0); }
+}
+
+@keyframes heroGlitchSlicesHard {
+  0%, 100% { opacity: 0; transform: translateX(0); clip-path: inset(0 0 0 0); }
+  8% { opacity: 0.9; transform: translateX(-18px); clip-path: inset(4% 0 74% 0); }
+  18% { opacity: 0.55; transform: translateX(15px); clip-path: inset(62% 0 12% 0); }
+  34% { opacity: 1; transform: translateX(-10px); clip-path: inset(28% 0 46% 0); }
+  48% { opacity: 0.42; transform: translateX(20px); clip-path: inset(78% 0 4% 0); }
+  66% { opacity: 0.86; transform: translateX(-14px); clip-path: inset(12% 0 58% 0); }
+  82% { opacity: 0.3; transform: translateX(8px); clip-path: inset(44% 0 30% 0); }
+}
+
+@keyframes heroHardGlitch {
+  0%, 100% { transform: translate3d(0, 0, 0) skewX(0deg); }
+  12% { transform: translate3d(-10px, 2px, 0) skewX(-2deg); }
+  24% { transform: translate3d(14px, -1px, 0) skewX(3deg); }
+  38% { transform: translate3d(-6px, 0, 0) skewX(-1deg); }
+  52% { transform: translate3d(9px, 2px, 0) skewX(2deg); }
+  70% { transform: translate3d(-12px, -1px, 0) skewX(-3deg); }
+  84% { transform: translate3d(4px, 0, 0) skewX(1deg); }
 }
 
 .hero-accent-line {

@@ -104,13 +104,26 @@ document.addEventListener('DOMContentLoaded', () => {
     ease: 'none'
   });
 
-  const glitchTitle = () => {
+  const glitchTitle = (hard = false) => {
     title.classList.add('is-glitching');
-    window.setTimeout(() => title.classList.remove('is-glitching'), 760);
+
+    if (hard) {
+      title.classList.add('is-hard-glitch');
+      gsap.timeline({ defaults: { duration: 0.045, ease: 'none' } })
+        .to(title, { x: -12, skewX: -2, filter: 'contrast(1.55) brightness(1.12)' })
+        .to(title, { x: 16, skewX: 3 })
+        .to(title, { x: -7, skewX: -1 })
+        .to(title, { x: 9, skewX: 2 })
+        .to(title, { x: 0, skewX: 0, filter: 'none', duration: 0.08 });
+    }
+
+    window.setTimeout(() => {
+      title.classList.remove('is-glitching', 'is-hard-glitch');
+    }, hard ? 620 : 760);
   };
 
-  window.setTimeout(glitchTitle, 2200);
-  window.setInterval(glitchTitle, 5200);
+  window.setTimeout(() => glitchTitle(true), 2200);
+  window.setInterval(() => glitchTitle(Math.random() > 0.45), 3200);
 
   const heroScroll = gsap.timeline({
     scrollTrigger: {
