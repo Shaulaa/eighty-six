@@ -76,7 +76,7 @@ function initSpearheadExit() {
   /* Para-raid entry — ScrollTrigger one-shot flash + reveal */
   ScrollTrigger.create({
     trigger: paraSection,
-    start: 'top 32%',
+    start: 'top top',
     once: true,
     onEnter: () => triggerPrEntryFlash(entryFlash),
   });

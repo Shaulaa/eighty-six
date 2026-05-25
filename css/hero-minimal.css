@@ -41,8 +41,8 @@
 
 .hero::after {
   background:
-    radial-gradient(ellipse at center, transparent 48%, rgba(0, 0, 0, 0.62) 100%),
-    linear-gradient(180deg, rgba(0, 0, 0, 0.44), transparent 26%, transparent 72%, #050608);
+    radial-gradient(ellipse at center, transparent 48%, rgba(0, 0, 0, 0.46) 100%),
+    linear-gradient(180deg, rgba(0, 0, 0, 0.38), transparent 28%, transparent 100%);
 }
 
 .hero-bg {
@@ -75,7 +75,7 @@
 .hero-bg-shade {
   background:
     linear-gradient(90deg, rgba(4, 5, 7, 0.86), rgba(4, 5, 7, 0.24) 42%, rgba(4, 5, 7, 0.88)),
-    linear-gradient(180deg, rgba(4, 5, 7, 0.76), rgba(4, 5, 7, 0.2) 42%, rgba(4, 5, 7, 0.94)),
+    linear-gradient(180deg, rgba(4, 5, 7, 0.72), rgba(4, 5, 7, 0.18) 42%, rgba(4, 5, 7, 0.36)),
     radial-gradient(circle at 52% 45%, rgba(197, 40, 45, 0.2), transparent 34%);
 }
 
@@ -92,6 +92,7 @@
   inset: 0;
   z-index: 5;
   pointer-events: none;
+  display: none;
 }
 
 .hero-cinema-bars span {
@@ -115,6 +116,7 @@
 }
 
 .hero-radar {
+  display: none;
   position: absolute;
   right: clamp(22px, 5vw, 76px);
   top: clamp(82px, 18vh, 170px);
@@ -141,6 +143,7 @@
 }
 
 .hero-focus {
+  display: none;
   position: absolute;
   left: 50%;
   top: 50%;
@@ -309,14 +312,52 @@
   line-height: 0.78;
   letter-spacing: 0;
   color: var(--hero-white);
-  text-shadow: 0 18px 72px rgba(0, 0, 0, 0.62), 0 0 72px rgba(197, 40, 45, 0.22);
+  text-shadow: none;
+  animation: heroTitleJitter 6s steps(1) infinite;
 }
 
 .hero-line-1,
 .hero-line-2 {
+  position: relative;
   display: block;
   overflow: hidden;
   transform-origin: center;
+}
+
+.hero-line-1::before,
+.hero-line-1::after,
+.hero-line-2::before,
+.hero-line-2::after {
+  content: attr(data-text);
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.hero-line-1::before,
+.hero-line-2::before {
+  color: rgba(255, 255, 255, 0.72);
+  transform: translateX(-3px);
+  clip-path: inset(12% 0 62% 0);
+}
+
+.hero-line-1::after,
+.hero-line-2::after {
+  color: rgba(197, 40, 45, 0.95);
+  transform: translateX(3px);
+  clip-path: inset(56% 0 18% 0);
+}
+
+.hero-title-big:hover .hero-line-1::before,
+.hero-title-big:hover .hero-line-1::after,
+.hero-title-big:hover .hero-line-2::before,
+.hero-title-big:hover .hero-line-2::after,
+.hero-title-big.is-glitching .hero-line-1::before,
+.hero-title-big.is-glitching .hero-line-1::after,
+.hero-title-big.is-glitching .hero-line-2::before,
+.hero-title-big.is-glitching .hero-line-2::after {
+  animation: heroGlitchSlices 0.72s steps(2, end) both;
 }
 
 .hero-line-1 {
@@ -325,6 +366,24 @@
 
 .hero-line-2 {
   color: rgba(240, 241, 239, 0.92);
+}
+
+@keyframes heroTitleJitter {
+  0%, 91%, 100% { transform: translate3d(0, 0, 0); filter: none; }
+  92% { transform: translate3d(-1px, 0, 0); filter: contrast(1.18); }
+  93% { transform: translate3d(2px, -1px, 0); }
+  94% { transform: translate3d(0, 1px, 0); }
+  95% { transform: translate3d(1px, 0, 0); filter: none; }
+}
+
+@keyframes heroGlitchSlices {
+  0%, 100% { opacity: 0; transform: translateX(0); }
+  12% { opacity: 0.9; transform: translateX(-8px); }
+  24% { opacity: 0.55; transform: translateX(7px); }
+  38% { opacity: 0; transform: translateX(0); }
+  52% { opacity: 0.7; transform: translateX(5px); }
+  68% { opacity: 0.35; transform: translateX(-4px); }
+  82% { opacity: 0; transform: translateX(0); }
 }
 
 .hero-accent-line {
@@ -379,6 +438,17 @@
   pointer-events: none;
 }
 
+.hero-scroll-hint::after {
+  content: "";
+  width: 15px;
+  height: 15px;
+  border-right: 4px solid var(--hero-red);
+  border-bottom: 4px solid var(--hero-red);
+  transform: rotate(45deg);
+  filter: drop-shadow(0 0 10px rgba(197, 40, 45, 0.78));
+  animation: heroScrollArrow 1.35s ease-in-out infinite;
+}
+
 .hero-scroll-line {
   width: 1px;
   height: 34px;
@@ -392,6 +462,17 @@
   line-height: 1;
   letter-spacing: 0.26em;
   text-transform: uppercase;
+}
+
+@keyframes heroScrollArrow {
+  0%, 100% {
+    opacity: 0.48;
+    transform: translateY(0) rotate(45deg);
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(6px) rotate(45deg);
+  }
 }
 
 .hero-content > *,

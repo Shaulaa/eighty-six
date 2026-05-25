@@ -10,6 +10,7 @@
   padding: 0;
   /* overflow: hidden removed — GSAP pin needs visible overflow on scroll container */
   min-height: 100vh;
+  min-height: 100dvh;
 }
 
 /* ── BACKGROUND EFFECTS ── */

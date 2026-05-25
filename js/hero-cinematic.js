@@ -58,7 +58,7 @@ document.addEventListener('DOMContentLoaded', () => {
       filter: 'grayscale(0.52) contrast(1.08) brightness(0.46) saturate(0.72)',
       duration: 1.6
     })
-    .to(bars, { scaleY: 0.78, duration: 0.9 }, 0)
+    .to(bars, { scaleY: 0, duration: 0.9 }, 0)
     .to(label, { autoAlpha: 1, y: 0, duration: 0.8 }, 0.28)
     .to([line1, line2], {
       yPercent: 0,
@@ -103,6 +103,14 @@ document.addEventListener('DOMContentLoaded', () => {
     repeat: -1,
     ease: 'none'
   });
+
+  const glitchTitle = () => {
+    title.classList.add('is-glitching');
+    window.setTimeout(() => title.classList.remove('is-glitching'), 760);
+  };
+
+  window.setTimeout(glitchTitle, 2200);
+  window.setInterval(glitchTitle, 5200);
 
   const heroScroll = gsap.timeline({
     scrollTrigger: {

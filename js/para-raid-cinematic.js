@@ -172,7 +172,7 @@ function buildCinematicDOM(section) {
 }
 
 /* ══════════════════════════════════════════════
-   SCROLL SEQUENCE — pinned, 5 beats × 100vh
+   SCROLL SEQUENCE — pinned, 7 beats × viewport height
 ══════════════════════════════════════════════ */
 function initScrollSequence(section) {
   const wrap    = document.getElementById('prc-scene-wrap');
@@ -184,41 +184,36 @@ function initScrollSequence(section) {
   const lboxBot = document.querySelector('.prc-lbox-bot');
 
   if (!wrap || !s0 || !s1 || !s2 || !s3) return;
+  if (lboxBot) gsap.set(lboxBot, { display: 'none', height: 0, scaleY: 0 });
 
   /* Set section tall enough for scroll beats */
   const BEATS = 7;
-  section.style.height    = `${BEATS * 100}vh`;
+
+  const applyViewportSizing = () => {
+    const vh = window.innerHeight || document.documentElement.clientHeight;
+    section.style.height = `${BEATS * vh}px`;
+    wrap.style.height = `${vh}px`;
+  };
+
+  applyViewportSizing();
+  ScrollTrigger.addEventListener('refreshInit', applyViewportSizing);
   section.style.minHeight = 'unset';
   section.style.overflow  = 'visible';
 
   /* scene wrap: relative, sized explicitly */
   wrap.style.position = 'relative';
   wrap.style.width    = '100%';
-  wrap.style.height   = '100vh';
   wrap.style.zIndex   = '15';
   gsap.set(wrap, { autoAlpha: 0 });
 
   /* All scenes off except s0 */
   [s1, s2, s3].forEach(s => gsap.set(s, { opacity: 0, pointerEvents: 'none' }));
 
-  /* ── Delay title reveal until Para-RAID reaches the handoff point ── */
-  gsap.to(wrap, {
-    autoAlpha: 1,
-    ease: 'none',
-    scrollTrigger: {
-      trigger: section,
-      start: 'top 42%',
-      end: 'top 8%',
-      scrub: 1.2,
-      invalidateOnRefresh: true,
-    }
-  });
-
   /* ── Intro: title card elements animate in on first enter ── */
   const tlIntro = gsap.timeline({
     scrollTrigger: {
       trigger: section,
-      start: 'top 28%',
+      start: 'top top',
       once: true,
     }
   });
@@ -247,13 +242,13 @@ function initScrollSequence(section) {
       pin: wrap,
       pinSpacing: false,
       start: 'top top',
-      end: `+=${BEATS * window.innerHeight}`,
+      end: () => `+=${BEATS * (window.innerHeight || document.documentElement.clientHeight)}`,
       scrub: 1.4,
       invalidateOnRefresh: true,
-      onEnter:     () => { gsap.to([lboxTop, lboxBot], { scaleY: 1, duration: 0.45, ease: 'power2.out' }); gsap.set(wrap, { visibility: 'visible', opacity: 1 }); },
-      onLeave:     () => { gsap.to([lboxTop, lboxBot], { scaleY: 0, duration: 0.35, ease: 'power2.in'  }); gsap.set(wrap, { visibility: 'hidden',  opacity: 0 }); },
-      onEnterBack: () => { gsap.to([lboxTop, lboxBot], { scaleY: 1, duration: 0.45, ease: 'power2.out' }); gsap.set(wrap, { visibility: 'visible', opacity: 1 }); },
-      onLeaveBack: () => { gsap.to([lboxTop, lboxBot], { scaleY: 0, duration: 0.35, ease: 'power2.in'  }); gsap.set(wrap, { visibility: 'hidden',  opacity: 0 }); },
+      onEnter:     () => { gsap.to(lboxTop, { scaleY: 1, duration: 0.45, ease: 'power2.out' }); gsap.set(wrap, { visibility: 'visible', opacity: 1 }); },
+      onLeave:     () => { gsap.to(lboxTop, { scaleY: 0, duration: 0.35, ease: 'power2.in'  }); gsap.set(wrap, { visibility: 'hidden',  opacity: 0 }); },
+      onEnterBack: () => { gsap.to(lboxTop, { scaleY: 1, duration: 0.45, ease: 'power2.out' }); gsap.set(wrap, { visibility: 'visible', opacity: 1 }); },
+      onLeaveBack: () => { gsap.to(lboxTop, { scaleY: 0, duration: 0.35, ease: 'power2.in'  }); gsap.set(wrap, { visibility: 'hidden',  opacity: 0 }); },
     }
   });
 
@@ -319,18 +314,21 @@ function initScrollSequence(section) {
   gsap.set('.prc-intercept-header', { opacity: 0, y: -16 });
   gsap.set('.prc-intercept-msgs',   { opacity: 0 });
   gsap.set('.prc-s2-ecg-wrap',      { opacity: 0, y: 14 });
+  const msgEls = prepareTransmissions();
 
   master
     .to('.prc-intercept-header', { opacity: 1, y: 0, duration: 0.4 }, 3.35)
     .to('.prc-intercept-msgs',   { opacity: 1,        duration: 0.3 }, 3.55)
     .to('.prc-s2-ecg-wrap',      { opacity: 1, y: 0,  duration: 0.4 }, 3.65);
 
-  /* Spawn messages when s2 enters */
-  let msgsSpawned = false;
-  ScrollTrigger.create({
-    trigger: section,
-    start: () => `top+=${3 * window.innerHeight} top`,
-    onEnter: () => { if (!msgsSpawned) { msgsSpawned = true; spawnTransmissions(); } },
+  msgEls.forEach((msgEl, index) => {
+    master.to(msgEl, {
+      opacity: 1,
+      y: 0,
+      duration: 0.18,
+      ease: 'power2.out',
+      onStart: () => typePreparedMsg(msgEl),
+    }, 3.58 + index * 0.18);
   });
 
   /* ── BEAT 4.5 → 5.5: S2 exit, S3 enter ── */
@@ -371,31 +369,34 @@ const MSGS = [
   { who: 'LENA',   side: 'right', color: 'lena',   text: 'Aku tidak akan berpaling. Tidak lagi.' },
 ];
 
-function spawnTransmissions() {
+function prepareTransmissions() {
   const container = document.getElementById('prc-msgs');
-  if (!container) return;
+  if (!container) return [];
 
-  MSGS.forEach((msg, i) => {
-    setTimeout(() => {
-      const el = document.createElement('div');
-      el.className = `prc-msg prc-msg-${msg.side}`;
-      el.innerHTML = `
-        <span class="prc-msg-who prc-who-${msg.color}">${msg.who}</span>
-        <span class="prc-msg-text" id="prc-msg-text-${i}"></span>
-      `;
-      container.appendChild(el);
-      requestAnimationFrame(() => requestAnimationFrame(() => {
-        el.classList.add('visible');
-        typeMsg(document.getElementById(`prc-msg-text-${i}`), msg.text);
-      }));
-    }, i * 900);
+  container.textContent = '';
+
+  return MSGS.map((msg, i) => {
+    const el = document.createElement('div');
+    el.className = `prc-msg prc-msg-${msg.side}`;
+    el.dataset.message = msg.text;
+    el.innerHTML = `
+      <span class="prc-msg-who prc-who-${msg.color}">${msg.who}</span>
+      <span class="prc-msg-text" id="prc-msg-text-${i}"></span>
+    `;
+    container.appendChild(el);
+    gsap.set(el, { opacity: 0, y: -12 });
+    return el;
   });
 }
 
-function typeMsg(el, text) {
-  if (!el) return;
+function typePreparedMsg(msgEl) {
+  if (!msgEl || msgEl.dataset.typed === 'true') return;
+  msgEl.dataset.typed = 'true';
+  const el = msgEl.querySelector('.prc-msg-text');
+  const text = msgEl.dataset.message || '';
+
   let i = 0;
-  const speed = 28;
+  const speed = 18;
   function tick() {
     if (i < text.length) {
       el.textContent = text.slice(0, ++i);

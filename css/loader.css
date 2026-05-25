@@ -11,18 +11,35 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  transition: opacity 0.8s ease, visibility 0.8s ease;
+  transition:
+    opacity 1.15s cubic-bezier(0.16, 1, 0.3, 1),
+    visibility 1.15s cubic-bezier(0.16, 1, 0.3, 1),
+    filter 1.15s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, filter;
 }
 
 #loader.hidden {
   opacity: 0;
   visibility: hidden;
+  filter: blur(10px);
   pointer-events: none;
 }
 
 .loader-inner {
   text-align: center;
   position: relative;
+  transform: translateY(0);
+  transition:
+    opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.9s cubic-bezier(0.16, 1, 0.3, 1),
+    filter 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform, filter;
+}
+
+#loader.hidden .loader-inner {
+  opacity: 0;
+  transform: translateY(-18px) scale(0.98);
+  filter: blur(6px);
 }
 
 /* Big 86 outline */
@@ -33,7 +50,8 @@
   -webkit-text-stroke: 1px rgba(192,41,43,0.4);
   letter-spacing: 0.05em;
   line-height: 1;
-  animation: loaderPulse 1.5s ease-in-out infinite;
+  animation: loaderPulse 2.4s ease-in-out infinite;
+  will-change: filter;
 }
 
 @keyframes loaderPulse {
@@ -55,8 +73,9 @@
   height: 100%;
   width: 0%;
   background: var(--red, #c0292b);
-  transition: width 0.1s linear;
   position: relative;
+  box-shadow: 0 0 18px rgba(192, 41, 43, 0.38);
+  will-change: width;
 }
 
 .loader-bar-fill::after {
@@ -80,6 +99,17 @@
   color: rgba(192,41,43,0.7);
   text-transform: uppercase;
   height: 16px;
+  transition:
+    opacity 0.28s ease,
+    transform 0.28s ease,
+    filter 0.28s ease;
+  will-change: opacity, transform, filter;
+}
+
+.loader-status.is-changing {
+  opacity: 1;
+  transform: translateY(0);
+  filter: drop-shadow(0 0 8px rgba(192, 41, 43, 0.55));
 }
 
 .loader-title {
@@ -110,3 +140,15 @@
 .loader-corner.tr { top: 40px; right: 40px; transform: scaleX(-1); }
 .loader-corner.bl { bottom: 40px; left: 40px; transform: scaleY(-1); }
 .loader-corner.br { bottom: 40px; right: 40px; transform: scale(-1); }
+
+@media (prefers-reduced-motion: reduce) {
+  #loader,
+  .loader-inner,
+  .loader-status {
+    transition: none !important;
+  }
+
+  .loader-number {
+    animation: none !important;
+  }
+}
